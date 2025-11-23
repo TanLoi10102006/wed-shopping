@@ -2,9 +2,10 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sản phẩm</title>
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <link
@@ -96,7 +97,13 @@
     .product-card {
       overflow: hidden;
       position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1) !important;
+    }
+
     .img-wrapper {
       position: relative;
       overflow: hidden;
@@ -161,7 +168,16 @@
       font-size: 1.05rem;
     }
     .category-dropdown .dropdown-toggle::after {
-      display: none;
+      display: inline-block;
+      margin-left: 0.255em;
+      vertical-align: 0.255em;
+      content: "";
+      border-top: 0.3em solid;
+      border-right: 0.3em solid transparent;
+      border-bottom: 0;
+      border-left: 0.3em solid transparent;
+      float: right;
+      margin-top: 8px;
     }
     .category-dropdown .dropdown-toggle:hover {
       color: #333;
@@ -172,10 +188,11 @@
       border-radius: 4px;
       padding: 5px 0;
       margin-top: 5px;
+      width: 100%;
     }
     .category-dropdown .dropdown-item {
       display: block;
-      font-size: 18px;
+      font-size: 1rem;
       padding: 10px 15px;
       text-decoration: none;
       color: #1e3a8a;
@@ -185,10 +202,7 @@
     }
     .category-dropdown .dropdown-item:hover {
       background-color: #ebf2f3;
-      color: #7499cb;
-      border-radius: 4px;
-      border-bottom: 3px solid #064789 !important;
-      padding-bottom: 7px;
+      color: #064789;
     }
     /**-----------FOOTER-------**/
     .footer-modern {
@@ -216,7 +230,7 @@
       height: 2.625rem;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: center; /* Đã sửa lỗi chính tả từ container thành center */
       border-radius: 50%;
       background-color: #064789;
       color: white;
@@ -230,7 +244,14 @@
       color: black;
     }
 
-    /*------MOBILE-TABLET----*/
+    /*------MOBILE-TABLET - CÁC CHỈNH SỬA BẮT ĐẦU TỪ ĐÂY----*/
+    @media (max-width: 991.98px) {
+      /* Đảo ngược thứ tự cột trên tablet và mobile để danh mục lên trước */
+      .product-page-row {
+        flex-direction: column-reverse;
+      }
+    }
+
     @media (max-width: 767.98px) {
       .d-none.d-md-flex {
         display: none !important;
@@ -246,7 +267,7 @@
 
       /* Giảm chiều cao hình ảnh sản phẩm trên mobile để dễ cuộn */
       .img-wrapper img {
-        height: 280px !important; /* Giảm từ 400px xuống 280px */
+        height: 320px !important; /* Điều chỉnh lại để ảnh trông cân đối hơn */
       }
 
       /* Tăng padding cho card trên mobile để dễ chạm */
@@ -254,7 +275,11 @@
         margin-bottom: 1.5rem;
       }
 
-      /* Điều chỉnh dropdown danh mục trên mobile */
+      /* Cải thiện danh mục sản phẩm trên mobile */
+      .category-sidebar {
+        margin-bottom: 2rem; /* Thêm khoảng cách với lưới sản phẩm */
+      }
+
       .category-dropdown .dropdown-item {
         font-size: 1rem; /* Giảm font cho dễ đọc trên màn nhỏ */
         padding: 8px 12px;
@@ -273,6 +298,13 @@
       }
 
       /* Đảm bảo footer links stack tốt hơn */
+      .footer-modern .footer-column {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+      .footer-modern .social {
+        justify-content: center;
+      }
       .footer-modern ul li {
         margin-bottom: 0.5rem;
       }
@@ -284,30 +316,14 @@
         margin: 0 0.5rem;
       }
 
-      /* Ẩn sidebar danh mục trên mobile để tập trung vào sản phẩm */
-      .sidebar-mobile {
-        display: none !important;
-      }
-
-      /* Tăng kích thước chữ tiêu đề trên mobile cho dễ đọc */
-      .text-center h2 {
-        font-size: 1.8rem;
+      /* Căn giữa phần thông tin footer */
+      .footer-info {
+        text-align: center;
       }
     }
     @media (min-width: 768px) {
       header.d-md-none {
         display: none !important;
-      }
-    }
-
-    /* Làm banner và các section đẹp hơn trên mobile */
-    @media (max-width: 767.98px) {
-      /* ----- FOOTER ----- */
-      .footer-modern .footer-column {
-        text-align: center;
-      }
-      .footer-modern .social {
-        justify-content: center;
       }
     }
   </style>
@@ -374,10 +390,14 @@
                 class="fa-solid fa-bag-shopping fa-xl"
                 style="color: #064789"
               ></i>
-              <span class="cart-value">0</span>
+              <span
+                class="cart-value position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                >0</span
+              >
             </a>
             <button
               class="btn"
+              type="button"
               data-bs-toggle="offcanvas"
               data-bs-target="#mobileNav"
             >
@@ -543,8 +563,8 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-lg-3 sidebar-mobile">
+      <div class="row product-page-row">
+        <div class="col-lg-3 category-sidebar">
           <div class="rounded border p-3 mb-4" style="background-color: white">
             <h4
               class="mb-3 fw-bold"
@@ -593,13 +613,11 @@
               <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card product-card shadow-sm">
                   <div class="img-wrapper">
-                    <div>
-                      <img
-                        src="anh/sp/setxanh.jpg"
-                        class="card-img-top"
-                        alt="Twee hoa hồng nhỏ"
-                      />
-                    </div>
+                    <img
+                      src="anh/sp/setxanh.jpg"
+                      class="card-img-top"
+                      alt="Twee hoa hồng nhỏ"
+                    />
                     <a href="product1.html" class="btn btn-primary view-btn"
                       >Xem chi tiết</a
                     >
@@ -613,13 +631,11 @@
               <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card product-card shadow-sm">
                   <div class="img-wrapper">
-                    <div>
-                      <img
-                        src="anh/sp/nguhong.jpg"
-                        class="card-img-top"
-                        alt="Twee hoa hồng nhỏ"
-                      />
-                    </div>
+                    <img
+                      src="anh/sp/nguhong.jpg"
+                      class="card-img-top"
+                      alt="Twee hoa hồng nhỏ"
+                    />
                     <a href="product2.html" class="btn btn-primary view-btn"
                       >Xem chi tiết</a
                     >
@@ -633,13 +649,11 @@
               <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card product-card shadow-sm">
                   <div class="img-wrapper">
-                    <div>
-                      <img
-                        src="anh/sp/setdo.jpg"
-                        class="card-img-top"
-                        alt="Bé Cherry Ngọt Ngào"
-                      />
-                    </div>
+                    <img
+                      src="anh/sp/setdo.jpg"
+                      class="card-img-top"
+                      alt="Bé Cherry Ngọt Ngào"
+                    />
                     <a href="product3.html" class="btn btn-primary view-btn"
                       >Xem chi tiết</a
                     >
@@ -650,18 +664,14 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
               <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card product-card shadow-sm">
                   <div class="img-wrapper">
-                    <div>
-                      <img
-                        src="anh/sp/setnam.jpg"
-                        class="card-img-top"
-                        alt="Set Dạo Phố Thoáng Mát"
-                      />
-                    </div>
+                    <img
+                      src="anh/sp/setnam.jpg"
+                      class="card-img-top"
+                      alt="Set Dạo Phố Thoáng Mát"
+                    />
                     <a href="product4.html" class="btn btn-primary view-btn"
                       >Xem chi tiết</a
                     >
@@ -675,13 +685,11 @@
               <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card product-card shadow-sm">
                   <div class="img-wrapper">
-                    <div>
-                      <img
-                        src="anh/sp/dobo.jpg"
-                        class="card-img-top"
-                        alt="Set đồ ngủ cổ sen ngọt ngào"
-                      />
-                    </div>
+                    <img
+                      src="anh/sp/dobo.jpg"
+                      class="card-img-top"
+                      alt="Set đồ ngủ cổ sen ngọt ngào"
+                    />
                     <a href="product5.html" class="btn btn-primary view-btn"
                       >Xem chi tiết</a
                     >
@@ -695,13 +703,11 @@
               <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card product-card shadow-sm">
                   <div class="img-wrapper">
-                    <div>
-                      <img
-                        src="anh/sp/yemtho.jpg"
-                        class="card-img-top"
-                        alt="Yếm Thỏ hồng hoa nhí"
-                      />
-                    </div>
+                    <img
+                      src="anh/sp/yemtho.jpg"
+                      class="card-img-top"
+                      alt="Yếm Thỏ hồng hoa nhí"
+                    />
                     <a href="product6.html" class="btn btn-primary view-btn"
                       >Xem chi tiết</a
                     >
@@ -712,18 +718,14 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="row">
               <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card product-card shadow-sm">
                   <div class="img-wrapper">
-                    <div>
-                      <img
-                        src="anh/sp/vet.jpg"
-                        class="card-img-top"
-                        alt="Set quý ông nhỏ"
-                      />
-                    </div>
+                    <img
+                      src="anh/sp/vet.jpg"
+                      class="card-img-top"
+                      alt="Set quý ông nhỏ"
+                    />
                     <a href="product7.html" class="btn btn-primary view-btn"
                       >Xem chi tiết</a
                     >
@@ -734,17 +736,14 @@
                   </div>
                 </div>
               </div>
-
               <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card product-card shadow-sm">
                   <div class="img-wrapper">
-                    <div>
-                      <img
-                        src="anh/sp/dichoi.jpg"
-                        class="card-img-top"
-                        alt="Set Thu Đông Búp Bê"
-                      />
-                    </div>
+                    <img
+                      src="anh/sp/dichoi.jpg"
+                      class="card-img-top"
+                      alt="Set Thu Đông Búp Bê"
+                    />
                     <a href="product8.html" class="btn btn-primary view-btn"
                       >Xem chi tiết</a
                     >
@@ -755,17 +754,14 @@
                   </div>
                 </div>
               </div>
-
               <div class="col-md-4 col-sm-6 mb-4">
                 <div class="card product-card shadow-sm">
                   <div class="img-wrapper">
-                    <div>
-                      <img
-                        src="anh/sp/aokhoac.jpg"
-                        class="card-img-top"
-                        alt="Áo khoác mùa đông cho bé"
-                      />
-                    </div>
+                    <img
+                      src="anh/sp/aokhoac.jpg"
+                      class="card-img-top"
+                      alt="Áo khoác mùa đông cho bé"
+                    />
                     <a href="product9.html" class="btn btn-primary view-btn"
                       >Xem chi tiết</a
                     >
@@ -840,7 +836,7 @@
         <div
           class="d-flex flex-wrap justify-content-between align-items-center"
         >
-          <div>
+          <div class="footer-info">
             <h2 class="fw-bold text-uppercase mb-2">TWEE</h2>
             <p class="mb-0 small">
               xxx Lê Trọng Tấn, Phường Tây Thạnh, Quận Tân Phú, TP.HCM.<br />
