@@ -213,7 +213,7 @@ html {
   height: 2.625rem;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: container;
   border-radius: 50%;
   background-color:#064789;
   color:white;
@@ -230,6 +230,54 @@ html {
 /*------MOBILE-TABLET----*/
 @media (max-width: 767.98px) {
   .d-none.d-md-flex { display: none !important; }
+  
+  /* Cải thiện sản phẩm trên mobile */
+  .product-card .card-body h6 {
+    font-size: 1rem; /* Giảm kích thước tiêu đề sản phẩm */
+  }
+  .product-card .card-body p {
+    font-size: 0.9rem; /* Giảm kích thước giá */
+  }
+  
+  /* Giảm chiều cao hình ảnh sản phẩm trên mobile để dễ cuộn */
+  .img-wrapper img {
+    height: 280px !important; /* Giảm từ 400px xuống 280px */
+  }
+  
+  /* Tăng padding cho card trên mobile để dễ chạm */
+  .product-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Điều chỉnh dropdown danh mục trên mobile */
+  .category-dropdown .dropdown-item {
+    font-size: 1rem; /* Giảm font cho dễ đọc trên màn nhỏ */
+    padding: 8px 12px;
+  }
+  
+  /* Cải thiện giỏ hàng panel trên mobile: làm full width và slide từ phải */
+  #cart-panel {
+    width: 100% !important;
+    right: -100% !important; /* Slide full từ phải */
+    border-radius: 0 !important; /* Loại bỏ border radius cho full screen */
+  }
+  
+  /* Tăng kích thước icon giỏ hàng mobile */
+  header.d-md-none .fa-bag-shopping {
+    font-size: 1.5rem;
+  }
+  
+  /* Đảm bảo footer links stack tốt hơn */
+  .footer-modern ul li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .footer-modern .social-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 1.1rem;
+    margin: 0 0.5rem;
+  }
 }
 @media (min-width: 768px) {
   header.d-md-none { display: none !important; }
@@ -669,6 +717,6 @@ html {
 
     <script src="JS_DangNhap.js"></script>
     <script src="JS_GioHang.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"</script>
 </body>
 </html>
