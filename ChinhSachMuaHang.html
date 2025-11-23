@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Chuyện Nhà Twee</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+html {
+  scroll-behavior: smooth; /* chuyển động mượt khi cuộn */
+}
+*{
+ margin: 0px;
+ padding: 0px;
+}
+  @keyframes slideUp {
+      from {opacity: 0; transform: translateY(20px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background: #fcfdf2;
+      color: #333;
+      line-height: 1.6;
+    }
+ 
+    /**Menu**/
+.menu-page{
+    padding: 45px 15px;
+    height:120px ;
+    justify-content: space-between;
+    display: flex; 
+    
+}
+.nav{
+    color: none;
+}
+.nav-item{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.nav-item a{
+    font-size:18px;
+    padding: 10px;
+    text-decoration: none;
+    color:#064789;
+    font-weight: 750;
+    height: 40px;
+    display: inline;
+}
+.nav-item a:hover{
+    background-color: #ebf2f3;
+    color: #064789 ;
+    padding: 10px;
+    border-radius:4px;
+}
+.cart-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-icon i {
+  color: #064789;
+  font-size: 26px;
+}
+
+.cart-icon .cart-value {
+  position: absolute;
+  top: -6px;
+  right: -5px;
+  background-color: #F2F0D5;
+  color: #064789;
+  font-size: 12px;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+}
+
+/**--------MENU MOBILE----------**/
+#mobileNav .list-group-item:hover {
+    background-color: #b3cfe5 ;   
+    color: #064789;              
+    font-weight: bold ;
+    border-left: 5px solid #064789; 
+    transition: all 0.3s ease ;
+    padding-left: 20px ;       
+}
+ /**FOOTER**/
+ .footer-modern{
+    background-color: #b3cfe5;
+    color:#064789;
+}
+.footer-modern h4 {
+  font-size: 1.1rem;
+}
+
+.footer-modern ul li a {
+  color: #403E3E;	
+  transition: color .3s;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.footer-modern ul li a:hover {
+  color: white;
+}
+
+/* Social icon */
+.footer-modern .social-btn {
+  width: 2.625rem;
+  height: 2.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color:#064789;
+  color:white;
+  font-size: 1.2rem;
+  transition: all .3s;
+  margin-top: 20px;
+}
+
+.footer-modern .social-btn:hover {
+  background-color: white;
+  color: black;
+}
+/*------MOBILE-TABLET----*/
+@media (max-width: 767.98px) {
+  .d-none.d-md-flex { display: none !important; }
+   /* ----- FOOTER ----- */
+  .footer-modern .footer-column {
+    text-align: center;
+  }
+  .footer-modern .social {
+    justify-content: center;
+  }
+}
+@media (min-width: 768px) {
+  header.d-md-none { display: none !important; }
+}
+
+  </style>
+</head>
+<body>
+   
+<!--------------------MENU-------------->
+       <div class="d-none d-md-flex" style="background-color: #b3cfe5;">
+   <div class="logo" style="width: 15%;">
+         <img src="anh/anh/logotrongsuot.png" alt="Logo" style="width: 200px;height: 135px;" />
+    </div>
+      <div class="menu-page row" style="width: 85%;">
+        <div class="col-8 menu">
+           <ul class="nav">
+              <li class="nav-item"><a href="index.html">TRANG CHỦ</a></li>
+              <li class="nav-item"><a href="ChuyenNhaTwee.html">CHUYỆN NHÀ TWEE</a></li>
+              <li class="nav-item"><a href="SanPham.html">SẢN PHẨM</a></li>
+              <li class="nav-item"><a href="BoSuuTap.html">BỘ SƯU TẬP</a></li>
+              <li class="nav-item"><a href="DichVu.html">DỊCH VỤ</a> </li>
+           </ul>
+        </div>
+        <div class="col-4 contact menu">
+           <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a href="#" class="nav-link cart-icon position-relative">
+              <i class="fa-solid fa-bag-shopping fa-lg"></i>
+              <span class="cart-value">0</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="DangNhap.html" id="loginText" class="nav-link">ĐĂNG NHẬP/ĐĂNG KÍ </a>
+            </li>
+            <li class="nav-item">
+              <a href="DangNhapQuanLy.html" class="nav-link">
+                 <i class="fas fa-store-alt" style="color:  #064789;"></i>
+              </a>
+            </li>
+         </ul>
+        </div>
+  </div>
+</div>
+
+
+<!-- MENU MOBILE MỚI (chỉ hiện dưới 768px) -->
+<header class="d-md-none sticky-top shadow-sm" style="background:#b3cfe5;">
+  <div class="container-fluid">
+    <div class="row align-items-center py-2">
+      <div class="col-4">
+        <img src="anh/anh/logotrongsuot.png" alt="Logo" class="img-fluid" style="max-height:70px;">
+      </div>
+      <div class="col-8 text-end">
+        <a href="#" class="me-3 position-relative">
+          <i class="fa-solid fa-bag-shopping fa-xl" style="color:#064789"></i>
+          <span class="cart-value position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+        </a>
+        <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
+          <i class="fa-solid fa-bars fa-xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+
+<!----- Offcanvas Menu Mobile ----->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileNav">
+  <div class="offcanvas-header">
+    <h5 class="fw-bold">TWEE</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-group list-group-flush fs-4">
+      <a href="index.html"  class="list-group-item list-group-item-action py-3">TRANG CHỦ</a>
+      <a href="ChuyenNhaTwee.html"  class="list-group-item list-group-item-action py-3">CHUYỆN NHÀ TWEE</a>
+      <a href="SanPham.html" class="list-group-item list-group-item-action py-3">SẢN PHẨM</a>
+      <a href="BoSuuTap.html" class="list-group-item list-group-item-action py-3">BỘ SƯU TẬP</a>
+      <a href="DichVu.html" class="list-group-item list-group-item-action py-3">DỊCH VỤ</a>
+      <a href="DangNhap.html" class="list-group-item list-group-item-action py-3 text-primary fw-bold">ĐĂNG NHẬP/ĐĂNG KÍ</a>
+      <a href="DangNhapQuanLy.html" class="list-group-item list-group-item-action py-3 text-danger fw-bold">
+         <i class="fas fa-crown "></i>QUẢN LÝ CỬA HÀNG
+      </a>
+    </ul>
+  </div>
+</div>
+
+
+<!------- PANEL GIỎ HÀNG HIỆN RA -------->
+  <div id="cart-panel" 
+     style="position:fixed;top:0;right:-400px;width:360px;height:100%;
+            background:#fcfdf2;box-shadow:-2px 0 6px rgba(0,0,0,0.2);
+            transition:right 0.3s ease;padding:16px;z-index:2000;
+            overflow-y:auto;border-radius: 5px">
+     <h3 style="margin-top:0;">Giỏ hàng của bạn</h3>
+      <ul id="cart-list" style="list-style:none;padding:0;margin:0;"></ul>
+  <hr>
+  <div style="display:flex;justify-content:space-between;font-weight:bold;">
+      <span>Tổng tiền:</span>
+      <span id="cart-total">0₫</span>
+  </div>
+
+  <button id="clear-cart"
+          style="margin-top:10px;width:100%;padding:10px;background:#b3cfe5;
+                 color:black;border:none;border-radius:6px;cursor:pointer;">
+    Xóa tất cả
+  </button>
+
+  <button id="send-request"
+          style="margin-top:10px;width:100%;padding:10px;background:#f9e7d2;
+                 color:black;border:none;border-radius:6px;cursor:pointer;">
+    Gửi yêu cầu
+  </button>
+
+  <!-- Dòng thông báo -->
+  <p id="success-message" style="display:none;margin-top:8px;color:#6d9fd1;font-weight:bold;text-align:center;">
+    Đã gửi yêu cầu thành công!
+  </p>
+
+  <button id="close-cart"
+          style="margin-top:10px;width:100%;padding:10px;background:#63adf7;
+                 color:white;border:none;border-radius:6px;cursor:pointer;">
+    Đóng
+  </button>
+</div>
+
+ <!-------CHÍNH SÁCH MUA HÀNG------->
+  <section class="policy-section py-5 " style="background-color: #FFF8E7;">
+  <div class="container " >
+	  
+    <div class="text-center mb-4">
+      <h2 style="font-weight: 800; font-size: 2rem; color: #E46A09; text-transform: uppercase;">CHÍNH SÁCH MUA HÀNG</h2>
+      <div style="width:80px; height:4px; background-color:#E46A09; margin:10px auto 0; border-radius:2px;"></div>
+    </div>
+	  
+    <div class="row justify-content-center">
+      <div class="col-lg-10">
+        <div class="p-4 rounded-3 shadow-sm bg-white">
+			
+          <p class="mb-3">
+            TWEE cam kết mang đến cho khách hàng những trải nghiệm mua hàng nhanh chóng, an toàn và tiện lợi nhất. 
+            Tất cả sản phẩm được cập nhật liên tục thường xuyên, chất liệu an toàn.
+          </p>
+			
+          <ol style="line-height:1.8;">
+            <li><strong>Cách đặt hàng/mua hàng:</strong>
+			    <ul type="square">
+					<li>Đặt hàng trực tiếp qua website:  <span style="color: #E46A09"><i> twee@gmail.com</i></span></li>		<li>Đặt hàng qua sđt/zalo/fanpage của quán</li>
+					<li>Khách hàng có thể đến trực tiếp twee để mua ở địa chỉ: <span style="color: #E46A09"><i>xxx Lê Trọng Tấn, Phường Tây Thạnh, Quận Tân Phú, TP.HCM.</i></span></li>
+				</ul>
+			</li>
+			  
+            <li><strong>Thanh toán:</strong>
+				 <ul type="square">
+					<li>Twee nhận chuyển khoản hoặc tiền mặt</li>		
+					<li>Đối với đơn hàng trên 1.000.000đ, khách hàng vui lòng đặt cọc trước giúp quán khoảng 20% trên tổng giá trị đơn hàng</li>
+					<li>Nếu khách hàng có voucher, shop có hỗ trợ khách sử dụng tối đa 1 voucher cho mỗi đơn hàng</li>
+				</ul>			  
+			</li>
+			  
+            <li><strong>Giao hàng:</strong>
+				<ul type="square">
+					<li>Twee nhận giao hàng trong khu vực nội thành TP.HCM</li>		
+					<li>Đơn hàng trên 300.000đ sẽ được miễn phí giao hàng</li>
+					<li>Phí giao hàng shop sẽ tính dựa theo khoảng cách:
+					    <ul type="circle">
+							<li>Dưới 3km: 10.000đ</li>
+							<li>Từ 3-6km: 15.000đ</li>
+							<li>Trên 6km: Tính theo giá các App giao hàng (Grab/Shopee)</li>
+						</ul>
+					</li>
+				</ul>			  
+			</li>
+			  
+            <li><strong>Đổi/trả hàng: </strong>
+			    <ul type="square">
+					<li>Khi nhận được đơn hàng, khách hàng vui lòng quay video/chụp ảnh đơn hàng để xác nhận đã nhận được đơn hàng "nguyên vẹn" giúp shop</li>		
+					<li>Twee sẽ hoàn tiền 100% nếu đơn hàng giao đến bị hư/rác. Lưu ý: Twee chỉ nhận hoàn tiền khi khách liên hệ với Twee trong vòng 24h đẩu tiên kể từ lúc nhận được đơn hàng và có kèm hình ảnh/video về đơn hàng</li>
+					<li>Đối với trường hợp giao thiếu đồ/sai đồ, khách hàng liên hệ gấp qua fanpage Twee sẽ giao bổ sung liền cho khách và có đi kèm voucher trong đơn hàng</li>
+				</ul>	
+			</li>			
+          </ol>
+			
+          <p class="mt-3 mb-0 text-end fw-bold"><em>Cảm ơn quý khách đã tin tưởng và lựa chọn TWEE</em></p>
+			
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  
+
+  <!--------- FOOTER --------->
+  <footer class="footer-modern py-5" >
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-md-3 mb-4 footer-column">
+        <h4 class="fw-bold text-uppercase mb-3">THÔNG TIN</h4>
+        <ul class="list-unstyled">
+          <li><a href="ChuyenNhaTwee.html">Câu Chuyện Của Chúng Tôi</a></li>
+          <li><a href="ChuyenNhaTwee.html">Tin Tức THE CHỐT</a></li>
+          <li><a href="DichVu.html">Miễn Phí Giao Hàng</a></li>
+          <li><a href="DichVu.html">Đơn Lớn Giá Hời</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 mb-4 footer-column">
+        <h4 class="fw-bold text-uppercase mb-3">Danh Mục Sản Phẩm</h4>
+        <ul class="list-unstyled">
+          <li><a href="ChiTietBoSuuTap.html#dolen">Đồ len ấm áp</a></li>
+          <li><a href="ChiTietBoSuuTap.html#sanhdieu">Set dạo phố cho nam sành điệu</a></li>
+          <li><a href="product6.html">Yếm Thỏ hồng hoa nhí</a></li>
+          <li><a href="product5.html">Set đồ ngủ cổ sen ngọt ngào</a></li>
+          <li><a href="product8.html">Set Thu Đông Búp Bê</a></li>
+
+        </ul>
+      </div>
+
+      <div class="col-md-3 mb-4 footer-column">
+        <h4 class="fw-bold text-uppercase mb-3">Chính Sách</h4>
+        <ul class="list-unstyled">
+          <li><a href="ChinhSachMuaHang.html">Chính Sách Mua Hàng</a></li>
+          <li><a href="ChinhSachBaoMatThongTin.html">Chính Sách Bảo Mật Thông Tin</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 mb-4 footer-column">
+        <h4 class="fw-bold text-uppercase mb-3">Liên Kết Nhanh</h4>
+        <ul class="list-unstyled">
+          <li><a href="index.html">Trang Chủ</a></li>
+          <li><a href="ChuyenNhaTwee.html">Chuyện Nhà Twee</a></li>
+          <li><a href="SanPham.html">Sản Phẩm</a></li>
+          <li><a href="BoSuutap.html">Bộ Sưu Tập</a></li>
+          <li><a href="DichVu.html">Dịch Vụ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+      <div>
+        <h2 class="fw-bold text-uppercase mb-2">TWEE</h2>
+        <p class="mb-0 small">
+          xxx Lê Trọng Tấn, Phường Tây Thạnh, Quận Tân Phú, TP.HCM.<br>
+          Điện thoại: 0909.xxx.xxx — Email: twee@gmail.com
+		  <br>Giờ hoạt động: 8h-21h hằng ngày.
+        </p>
+      </div>
+
+      <div class="social d-flex gap-3 mt-3 mt-md-0">
+        <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+
+    <hr class="mt-4">
+    <p class="text-center mt-5"><b>© 2025 TWEE. All rights reserved.</b></p>
+  </div>
+</footer>
+
+   <script src="JS_DangNhap.js"></script>
+    <script src="JS_GioHang.js"></script>
+</body>
+</html>

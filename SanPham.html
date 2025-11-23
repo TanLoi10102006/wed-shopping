@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Sản phẩm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<style>
+
+*{
+ margin: 0px;
+ padding: 0px;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+/**MENU**/
+.menu-page{
+    padding: 45px 15px;
+    height:120px ;
+    justify-content: space-between;
+    display: flex; 
+    
+}
+
+
+.nav-item{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.nav-item a{
+    font-size:18px;
+    padding: 10px;
+    text-decoration: none;
+    color:#064789;
+    font-weight: 750;
+    height: 40px;
+    display: inline;
+}
+.nav-item a:hover{
+    background-color: #ebf2f3;
+    color: #064789 ;
+    padding: 10px;
+    border-radius:4px;
+}
+.cart-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-icon i {
+  color: #064789;
+  font-size: 26px;
+}
+
+.cart-icon .cart-value {
+  position: absolute;
+  top: -6px;
+  right: -5px;
+  background-color: #F2F0D5;
+  color: #064789 ;
+  font-size: 12px;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+}
+/**------Menu Mobile------*/
+#mobileNav .list-group-item:hover {
+    background-color: #b3cfe5 ;  
+    color: #064789;              
+    font-weight: bold ;
+    border-left: 5px solid #064789;    
+    transition: all 0.3s ease ;
+    padding-left: 20px ;        
+}
+
+    /**------SẢN PHẨM---**/
+        .underline {
+            height: 3px;
+            width: 100px;
+            background-color: #bccde6;
+            margin-top: 5px;
+        }
+        
+        /* === STYLE CHO HIỆU ỨNG HOVER === */
+        .product-card {
+            overflow: hidden;
+            position: relative;
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        .view-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0; 
+            transition: opacity 0.3s;
+            z-index: 10;
+            padding: 10px 25px;
+            font-weight: bold;
+        }
+        .img-wrapper img {
+            transition: opacity 0.3s, transform 0.3s; /* Thêm transform cho hiệu ứng phóng to */
+            width: 100%; 
+            height: 400px;
+            object-fit: cover;
+        }
+        .product-card:hover .img-wrapper img {
+            opacity: 0.6; 
+            transform: scale(1.05); /* Phóng to nhẹ khi hover */
+        }
+        .product-card:hover .view-btn {
+            opacity: 1; 
+        }
+        /* === KẾT THÚC STYLE CHO HIỆU ỨNG HOVER === */
+
+        /* Style cho danh mục bên trái */
+        .category-box-list .nav-item {
+            border-bottom: 1px solid #eee;
+            padding: 5px 0;
+            line-height: 1.5;
+        }
+        .category-box-list .nav-item:last-child {
+            border-bottom: none; 
+        }
+        .category-box-list .nav-link {
+            font-size: 1.05rem;
+            color: #333;
+            padding: 8px 0;
+            display: block; 
+        }
+        .category-box-list .nav-link:hover {
+            color: #0d6efd;
+        }
+        
+        /* Tùy chỉnh Dropdown */
+        .category-dropdown {
+            display: block;
+        }
+        .category-dropdown .dropdown-toggle {
+            background-color: transparent !important;
+            color: #333;
+            border: none;
+            padding: 8px 0;
+            text-align: left;
+            width: 100%;
+            display: block;
+            font-size: 1.05rem;
+        }
+        .category-dropdown .dropdown-toggle::after {
+            display: none; 
+        }
+        .category-dropdown .dropdown-toggle:hover {
+            color: #333;
+        }
+        /*Menu cấp 2 */
+        .category-dropdown .dropdown-menu {
+          border: 1px solid #ccc; 
+          border-radius: 4px;
+          padding: 5px 0;
+          margin-top: 5px; 
+        }
+        .category-dropdown .dropdown-item {
+          display: block; 
+          font-size: 18px;
+          padding: 10px 15px; 
+          text-decoration: none;
+          color:#1e3a8a;
+          background-color: transparent; /* Loại bỏ nền mặc định */
+          border-bottom: none !important; 
+          transition: all 0.2s ease;
+        }
+        .category-dropdown .dropdown-item:hover {
+          background-color: #ebf2f3;
+          color: #7499cb;
+          border-radius: 4px; 
+          border-bottom: 3px solid #064789 !important; 
+          padding-bottom: 7px;
+        }
+     /**-----------FOOTER-------**/
+  .footer-modern{
+    background-color: #b3cfe5;
+    color:#064789;
+}
+.footer-modern h4 {
+  font-size: 1.1rem;
+}
+
+.footer-modern ul li a {
+  color: #403E3E;	
+  transition: color .3s;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.footer-modern ul li a:hover {
+  color: white;
+}
+
+/* Social icon */
+.footer-modern .social-btn {
+  width: 2.625rem;
+  height: 2.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color:#064789;
+  color:white;
+  font-size: 1.2rem;
+  transition: all .3s;
+  margin-top: 20px;
+}
+
+.footer-modern .social-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+/*------MOBILE-TABLET----*/
+@media (max-width: 767.98px) {
+  .d-none.d-md-flex { display: none !important; }
+}
+@media (min-width: 768px) {
+  header.d-md-none { display: none !important; }
+}
+
+/* Làm banner và các section đẹp hơn trên mobile */
+@media (max-width: 767.98px) {
+  
+  /* ----- FOOTER ----- */
+  .footer-modern .footer-column {
+    text-align: center;
+  }
+  .footer-modern .social {
+    justify-content: center;
+  }
+}
+       
+    
+</style>
+<body>
+
+<!--MENU-->
+       <div class="d-none d-md-flex" style="background-color: #b3cfe5;">
+   <div class="logo" style="width: 15%;">
+         <img src="anh/anh/logotrongsuot.png" alt="Logo" style="width: 200px;height: 135px;" />
+    </div>
+      <div class="menu-page row" style="width: 85%;">
+        <div class="col-8 menu">
+           <ul class="nav">
+              <li class="nav-item"><a href="index.html">TRANG CHỦ</a></li>
+              <li class="nav-item"><a href="ChuyenNhaTwee.html">CHUYỆN NHÀ TWEE</a></li>
+              <li class="nav-item"><a href="SanPham.html">SẢN PHẨM</a></li>
+              <li class="nav-item"><a href="BoSuuTap.html">BỘ SƯU TẬP</a></li>
+              <li class="nav-item"><a href="DichVu.html">DỊCH VỤ</a> </li>
+           </ul>
+        </div>
+        <div class="col-4 contact menu">
+           <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a href="#" class="nav-link cart-icon position-relative">
+              <i class="fa-solid fa-bag-shopping fa-lg"></i>
+              <span class="cart-value">0</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="DangNhap.html" id="loginText" class="nav-link">ĐĂNG NHẬP/ĐĂNG KÍ </a>
+            </li>
+            <li class="nav-item">
+              <a href="DangNhapQuanLy.html" class="nav-link">
+              <i class="fas fa-store-alt" style="color:  #064789;"></i>
+              </a>
+            </li>
+         </ul>
+        </div>
+  </div>
+</div>
+
+<!-- MENU MOBILE MỚI (chỉ hiện dưới 768px) -->
+<header class="d-md-none sticky-top shadow-sm" style="background:#b3cfe5;">
+  <div class="container-fluid">
+    <div class="row align-items-center py-2">
+      <div class="col-4">
+        <img src="anh/anh/logotrongsuot.png" alt="Logo" class="img-fluid" style="max-height:70px;">
+      </div>
+      <div class="col-8 text-end">
+        <a href="#" class="me-3 position-relative">
+          <i class="fa-solid fa-bag-shopping fa-xl" style="color:#064789"></i>
+          <span class="cart-value position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+        </a>
+        <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
+          <i class="fa-solid fa-bars fa-xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Offcanvas Menu Mobile -->
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileNav">
+  <div class="offcanvas-header">
+    <h5 class="fw-bold">TWEE</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-group list-group-flush fs-4">
+      <a href="index.html"  class="list-group-item list-group-item-action py-3">TRANG CHỦ</a>
+      <a href="ChuyenNhaTwee.html"  class="list-group-item list-group-item-action py-3">CHUYỆN NHÀ TWEE</a>
+      <a href="SanPham.html" class="list-group-item list-group-item-action py-3">SẢN PHẨM</a>
+      <a href="BoSuuTap.html" class="list-group-item list-group-item-action py-3">BỘ SƯU TẬP</a>
+      <a href="DichVu.html" class="list-group-item list-group-item-action py-3">DỊCH VỤ</a>
+      <a href="DangNhap.html" class="list-group-item list-group-item-action py-3 text-primary fw-bold">ĐĂNG NHẬP/ĐĂNG KÍ</a>
+     <a href="DangNhapQuanLy.html" class="list-group-item list-group-item-action py-3 text-danger fw-bold">
+         <i class="fas fa-crown "></i>QUẢN LÝ CỬA HÀNG
+      </a>
+    </ul>
+  </div>
+</div>
+
+
+<!-- PANEL GIỎ HÀNG HIỆN RA -->
+<div id="cart-panel" 
+     style="position:fixed;top:0;right:-400px;width:360px;height:100%;
+            background:#fcfdf2;box-shadow:-2px 0 6px rgba(0,0,0,0.2);
+            transition:right 0.3s ease;padding:16px;z-index:2000;
+            overflow-y:auto;border-radius: 5px">
+  <h3 style="margin-top:0;">Giỏ hàng của bạn</h3>
+  <ul id="cart-list" style="list-style:none;padding:0;margin:0;"></ul>
+  <hr>
+  <div style="display:flex;justify-content:space-between;font-weight:bold;">
+    <span>Tổng tiền:</span>
+    <span id="cart-total">0₫</span>
+  </div>
+
+  <button id="clear-cart"
+          style="margin-top:10px;width:100%;padding:10px;background:#b3cfe5;
+                 color:black;border:none;border-radius:6px;cursor:pointer;">
+    Xóa tất cả
+  </button>
+
+  <button id="send-request"
+          style="margin-top:10px;width:100%;padding:10px;background:#f9e7d2;
+                 color:black;border:none;border-radius:6px;cursor:pointer;">
+    Gửi yêu cầu
+  </button>
+
+  <!-- Dòng thông báo -->
+  <p id="success-message" style="display:none;margin-top:8px;color:green;font-weight:bold;text-align:center;">
+    Đã gửi yêu cầu thành công!
+  </p>
+
+  <button id="close-cart"
+          style="margin-top:10px;width:100%;padding:10px;background:#63adf7;
+                 color:white;border:none;border-radius:6px;cursor:pointer;">
+    Đóng
+  </button>
+</div>
+
+<!--------SẢN PHẨM-------->
+    <div class="container-fluid" style="background-color: #f7f9fc; padding-bottom: 50px;">
+        <div class="row">
+            <div class="text-center mb-4 mt-4">
+                <h2 class="fw-bold" style="color:#1e3a8a;">Khám phá Sản phẩm</h2>
+                <div class="underline mx-auto"></div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-lg-3">
+                <div class="rounded border p-3 mb-4" style="background-color:white;">
+                    <h4 class="mb-3 fw-bold" style="color: #1e3a8a; border-bottom: 2px solid #eef2ff;padding-bottom: 10px;">Danh mục</h4>
+                    <ul class="nav flex-column category-box-list">
+                        <li class="nav-item">
+                            <div class="dropdown category-dropdown"> 
+                                <button type="button" class="dropdown-toggle fw-bold"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                    Phụ Kiện
+                                </button>
+                                <ul class="dropdown-menu"> 
+                                    <li><a class="dropdown-item" href="#">Nón</a></li> 
+                                    <li><a class="dropdown-item" href="#">Túi xách</a></li> 
+                                    <li><a class="dropdown-item" href="#">Khăn bandana</a></li> 
+                                </ul> 
+                            </div> 
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Trẻ sơ sinh</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">2-6 Tuổi</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">6-10 Tuổi</a>
+                        </li>
+                    </ul>
+                </div>
+                
+
+                </div>
+
+            <div class="col-lg-9">
+                <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="card product-card shadow-sm">
+                          <div class="img-wrapper">
+                            <div>
+                              <img src="anh/sp/setxanh.jpg" class="card-img-top" alt="Twee hoa hồng nhỏ">
+                            </div>
+                            <a href="product1.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                          </div>
+                          <div class="card-body text-center">
+                            <h6 class="card-title">Set Bé Tim xanh </h6>
+                            <p class="text-muted fw-bold">Giá: 359.000 Đ</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="card product-card shadow-sm">
+                          <div class="img-wrapper">
+                            <div>
+                              <img src="anh/sp/nguhong.jpg" class="card-img-top" alt="Twee hoa hồng nhỏ">
+                            </div>
+                            <a href="product2.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                          </div>
+                          <div class="card-body text-center">
+                            <h6 class="card-title">Twee hoa hồng nhỏ </h6>
+                            <p class="text-muted fw-bold">Giá: 109.000 Đ</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="card product-card shadow-sm">
+                          <div class="img-wrapper">
+                            <div>
+                              <img src="anh/sp/setdo.jpg" class="card-img-top" alt="Bé Cherry Ngọt Ngào">
+                            </div>
+                            <a href="product3.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                          </div>
+                          <div class="card-body text-center">
+                            <h6 class="card-title">Bé Cherry Ngọt Ngào</h6>
+                            <p class="text-muted fw-bold">Giá: 499.000 Đ</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="card product-card shadow-sm">
+                          <div class="img-wrapper">
+                            <div>
+                              <img src="anh/sp/setnam.jpg" class="card-img-top" alt="Set Dạo Phố Thoáng Mát">
+                            </div>
+                            <a href="product4.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                          </div>
+                          <div class="card-body text-center">
+                            <h6 class="card-title"> Set Dạo Phố Thoáng Mát </h6>
+                            <p class="text-muted fw-bold">Giá: 399.000 Đ</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="card product-card shadow-sm">
+                          <div class="img-wrapper">
+                            <div>
+                              <img src="anh/sp/dobo.jpg" class="card-img-top" alt="Set đồ ngủ cổ sen ngọt ngào">
+                            </div>
+                            <a href="product5.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                          </div>
+                          <div class="card-body text-center">
+                            <h6 class="card-title">Set đồ ngủ cổ sen ngọt ngào </h6>
+                            <p class="text-muted fw-bold">Giá: 209.000 Đ</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="card product-card shadow-sm">
+                          <div class="img-wrapper">
+                            <div>
+                              <img src="anh/sp/yemtho.jpg" class="card-img-top" alt="Yếm Thỏ hồng hoa nhí">
+                            </div>
+                            <a href="product6.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                          </div>
+                          <div class="card-body text-center">
+                            <h6 class="card-title">Yếm Thỏ hồng hoa nhí</h6>
+                            <p class="text-muted fw-bold">Giá: 639.000 Đ</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <div class="card product-card shadow-sm">
+                                <div class="img-wrapper">
+                                    <div>
+                                        <img src="anh/sp/vet.jpg" class="card-img-top" alt="Set quý ông nhỏ">
+                                    </div> 
+                                    <a href="product7.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h6 class="card-title"> Set quý ông nhỏ </h6>
+                                    <p class="text-muted fw-bold">Giá: 749.000 Đ</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <div class="card product-card shadow-sm">
+                                <div class="img-wrapper">
+                                    <div>
+                                        <img src="anh/sp/dichoi.jpg" class="card-img-top" alt="Set Thu Đông Búp Bê">
+                                    </div> 
+                                   <a href="product8.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h6 class="card-title">Set Thu Đông Búp Bê</h6>
+                                    <p class="text-muted fw-bold">Giá: 509.000 Đ</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-4 col-sm-6 mb-4">
+                            <div class="card product-card shadow-sm">
+                                <div class="img-wrapper">
+                                    <div>
+                                        <img src="anh/sp/aokhoac.jpg" class="card-img-top" alt="Áo khoác mùa đông cho bé">
+                                    </div>
+                                   <a href="product9.html" class="btn btn-primary view-btn">Xem chi tiết</a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h6 class="card-title">Áo khoác mùa đông cho bé</h6>
+                                    <p class="text-muted fw-bold">Giá: 739.000 Đ</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- FOOTER -->
+  <footer class="footer-modern py-5" >
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-md-3 mb-4 footer-column">
+        <h4 class="fw-bold text-uppercase mb-3">THÔNG TIN</h4>
+        <ul class="list-unstyled">
+          <li><a href="ChuyenNhaTwee.html">Câu Chuyện Của Chúng Tôi</a></li>
+          <li><a href="ChuyenNhaTwee.html">Tin Tức TWEE</a></li>
+          <li><a href="DichVu.html">Miễn Phí Giao Hàng</a></li>
+          <li><a href="DichVu.html">Đơn Lớn Giá Hời</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 mb-4 footer-column">
+        <h4 class="fw-bold text-uppercase mb-3">Danh Mục Sản Phẩm</h4>
+        <ul class="list-unstyled">
+          <li><a href="ChiTietBoSuuTap.html#dolen">Đồ len ấm áp</a></li>
+          <li><a href="ChiTietBoSuuTap.html#sanhdieu">Set dạo phố cho nam sành điệu</a></li>
+          <li><a href="product6.html">Yếm Thỏ hồng hoa nhí</a></li>
+          <li><a href="product5.html">Set đồ ngủ cổ sen ngọt ngào</a></li>
+          <li><a href="product8.html">Set Thu Đông Búp Bê</a></li>
+
+        </ul>
+      </div>
+
+      <div class="col-md-3 mb-4 footer-column">
+        <h4 class="fw-bold text-uppercase mb-3">Chính Sách</h4>
+        <ul class="list-unstyled">
+          <li><a href="ChinhSachMuaHang.html">Chính Sách Mua Hàng</a></li>
+          <li><a href="ChinhSachBaoMatThongTin.html">Chính Sách Bảo Mật Thông Tin</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 mb-4 footer-column">
+        <h4 class="fw-bold text-uppercase mb-3">Liên Kết Nhanh</h4>
+        <ul class="list-unstyled">
+          <li><a href="index.html">Trang Chủ</a></li>
+          <li><a href="ChuyenNhaTwee.html">Chuyện Nhà Twee</a></li>
+          <li><a href="SanPham.html">Sản Phẩm</a></li>
+          <li><a href="BoSuuTap.html">Bộ Sưu Tập</a></li>
+          <li><a href="DichVu.html">Dịch Vụ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+      <div>
+        <h2 class="fw-bold text-uppercase mb-2">TWEE</h2>
+        <p class="mb-0 small">
+          xxx Lê Trọng Tấn, Phường Tây Thạnh, Quận Tân Phú, TP.HCM.<br>
+          Điện thoại: 0909.xxx.xxx — Email: twee@gmail.com
+		  <br>Giờ hoạt động: 8h-21h hằng ngày.
+        </p>
+      </div>
+
+      <div class="social d-flex gap-3 mt-3 mt-md-0">
+        <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+
+    <hr class="mt-4">
+    <p class="text-center mt-5"><b>© 2025 TWEE. All rights reserved.</b></p>
+  </div>
+</footer>
+
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title fw-bold">Thông tin giao hàng</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <div class="mb-3">
+                        <label class="form-label">Họ tên</label>
+                        <input type="text" class="form-control" id="customerName" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Số điện thoại</label>
+                        <input type="tel" class="form-control" id="customerPhone" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Địa chỉ</label>
+                        <textarea class="form-control" id="customerAddress" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Thanh toán</label>
+                        <select class="form-select" id="paymentMethod">
+                            <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                            <option value="banking">Chuyển khoản ngân hàng</option>
+                        </select>
+                    </div>
+
+                    <div id="bankingInfo" class="alert alert-info d-none">
+                        <strong>Vietcombank</strong><br>STK: 9999.888.666<br>Chủ TK: TWEE STORE
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                <button type="button" class="btn btn-success" id="btnConfirmOrder">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <script src="JS_DangNhap.js"></script>
+    <script src="JS_GioHang.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bộ Sưu Tập Thời Trang Trẻ Em - TWEE Store</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .underline {
+            width: 300px;
+            height: 3px;
+            background-color: #99b4d9;
+            border-radius: 2px;
+            margin-top: 5px;
+        }
+
+        .product-card {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .view-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: 0.3s;
+            z-index: 10;
+            padding: 10px 20px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .img-wrapper img {
+            transition: 0.3s;
+            width: 100%;
+            height: auto;
+        }
+
+        .product-card:hover .img-wrapper img {
+            opacity: 0.6;
+            transform: scale(1.05);
+        }
+
+        .product-card:hover .view-btn {
+            opacity: 1;
+        }
+
+        .back-link {
+            color: #618bc4;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            padding-top: 30px;
+            margin: 10px;
+        }
+
+        button.view-btn {
+            cursor: pointer;
+        }
+
+        /* Nút giỏ hàng nổi */
+        .cart-float-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .cart-float-btn:hover {
+            transform: scale(1.1);
+            background-color: #0b5ed7;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: #dc3545;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body>
+
+<button class="cart-float-btn" onclick="openCartModal()">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-count" id="floatingCartCount" style="display: none;">0</span>
+</button>
+
+<section id="thu-dong">
+    <div class="container-fluid" style="background-color: #f7f9fc;">
+       
+        <div >
+            <a href="BoSuuTap.html" class="back-link">← QUAY LẠI TRANG CHỦ</a>
+        </div>
+       
+        <div class="row">
+            <h1 class="pt-4 pb-4 text-center" style="color: #1e3a8a;"> KHÁM PHÁ BỘ SƯU TẬP THU-ĐÔNG</h1>
+            <div class="underline mx-auto"></div>
+        </div>
+
+        <div class="row pt-5">
+
+            <div class="col-md-4 col-sm-6 mb-3" id="dolen">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/td.2.jpg" class="card-img-top" style="width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Đồ len ấm áp', '329.000 Đ', 'anh/bst/td.2.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title"> Đồ len ấm áp </h6>
+                        <p class="text-muted fw-bold">Giá: 329.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/td.3.jpg" class="card-img-top" style=" width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Set áo chấm bi xám', '569.000 Đ', 'anh/bst/td.3.jpg')">
+                                Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Set áo chấm bi xám có nơ </h6>
+                        <p class="text-muted fw-bold">Giá: 569.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/td.4.jpg" class="card-img-top" style="width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Set áo Dạ đỏ', '661.000 Đ', 'anh/bst/td.4.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Set áo Dạ đỏ </h6>
+                        <p class="text-muted fw-bold">Giá: 661.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row pt-5">
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div><img src="anh/bst/td.5.jpg" class="card-img-top"
+                                  style="width:100%;height:500px;object-fit: cover" alt=""></div>
+                        <button type="button" class="btn btn-primary view-btn"
+                                onclick="addToCart('Áo lông xanh + quần', '339.000 Đ', 'anh/bst/td.5.jpg')">
+                                Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title"> Áo lông xanh + quần </h6>
+                        <p class="text-muted fw-bold">Giá: 339.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/td.8.jpg" class="card-img-top" style=" width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Áo phao cho bé', '469.000 Đ', 'anh/bst/td.8.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Áo phao cho bé</h6>
+                        <p class="text-muted fw-bold">Giá: 469.000 Đ</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/td.7.jpg" class="card-img-top" style="width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Set Đồ chơi Tết', '461.000 Đ', 'anh/bst/td.7.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Set Đồ chơi Tết</h6>
+                        <p class="text-muted fw-bold">Giá: 461.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="xuan-he">
+
+    <div class="container-fluid" style="background-color: #f7f9fc;">
+       
+        <div class="row">
+            <h1 class="pt-4 pb-4 text-center" style="color: #1e3a8a;"> KHÁM PHÁ BỘ SƯU TẬP XUÂN-HÈ</h1>
+            <div class="underline mx-auto"></div>
+        </div>
+
+        <div class="row pt-5">
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/xh.2.jpg" class="card-img-top"  style="width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Yếm hoa nhí cho bé gái', '339.000 Đ', 'anh/bst/xh.2.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title"> Yếm hoa nhí cho bé gái </h6>
+                        <p class="text-muted fw-bold">Giá: 339.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/xh.3.jpg" class="card-img-top" style=" width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Đồ đi chơi cho bé nam', '309.000 Đ', 'anh/bst/xh.3.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Đồ đi chơi cho bé nam </h6>
+                        <p class="text-muted fw-bold">Giá: 309.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/xh.4.jpg" class="card-img-top" style="width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Set Đồ jean cho bé gái', '368.000 Đ', 'anh/bst/xh.4.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Set Đồ jean cho bé gái</h6>
+                        <p class="text-muted fw-bold">Giá: 368.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-5">
+
+            <div class="col-md-4 col-sm-6 mb-3" id="sanhdieu">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/xh.5.jpg" class="card-img-top" style="width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Set dạo phố sành điệu', '279.000 Đ', 'anh/bst/xh.5.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title"> Set dạo phố cho nam sành điệu </h6>
+                        <p class="text-muted fw-bold">Giá: 279.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/xh.6.jpg" class="card-img-top" style=" width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Váy trắng cho bé', '309.000 Đ', 'anh/bst/xh.6.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center"><h6 class="card-title">váy trắng cho bé </h6>
+                        <p class="text-muted fw-bold">Giá: 309.000 Đ</p></div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/xh.8.jpg" class="card-img-top" style="width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Đồ dạo phố bé nam', '336.000 Đ', 'anh/bst/xh.8.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title"> Đồ dạo phố cho bé nam năng động</h6>
+                        <p class="text-muted fw-bold">Giá: 336.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section id="the-thao">
+    <div class="container-fluid" style="background-color: #f7f9fc;">
+        
+        <div class="row">
+            <h1 class="pt-4 pb-4 text-center" style="color: #1e3a8a;"> KHÁM PHÁ BỘ SƯU TẬP THỂ THAO-NĂNG ĐỘNG</h1>
+            <div class="underline mx-auto"></div>
+        </div>
+
+        <div class="row pt-5">
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/ttnd.2.jpg" class="card-img-top" style="width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Set thể thao nâu', '129.000 Đ', 'anh/bst/ttnd.2.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title"> Set thể thao nâu </h6>
+                        <p class="text-muted fw-bold">Giá: 129.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/ttnd3.jpg" class="card-img-top" style=" width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Bộ thể thao nữ', '309.000 Đ', 'anh/bst/ttnd3.jpg')">
+                                Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Bộ đồ thể thao phong cách nữ </h6>
+                        <p class="text-muted fw-bold">Giá: 309.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/ttnd.4.jpg" class="card-img-top" style="width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Set Thể Thao Tím', '331.000 Đ', 'anh/bst/ttnd.4.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Set Thể Thao Tím</h6>
+                        <p class="text-muted fw-bold">Giá: 331.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pt-5">
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/ttnd.5.jpg" class="card-img-top" style="width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Đồ thể thao sành điệu', '424.000 Đ', 'anh/bst/ttnd.5.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Đồ thể thao sành điệu </h6>
+                        <p class="text-muted fw-bold">Giá: 424.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/ttnd.6.jpg" class="card-img-top" style=" width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn" onclick="addToCart('Set đồ xám phong cách', '369.000 Đ', 'anh/bst/ttnd.6.jpg')">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Set đồ xám phong cách </h6>
+                        <p class="text-muted fw-bold">Giá: 369.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-sm-6 mb-3">
+                <div class="card product-card shadow-sm">
+                    <div class="img-wrapper">
+                        <div>
+                            <img src="anh/bst/ttnd.1.jpg" class="card-img-top" style="width:100%;height:500px;object-fit: cover" alt="">
+                        </div>
+                        <button type="button" class="btn btn-primary view-btn"onclick="addToCart('Đồ bộ thoải mái', '156.000 Đ', 'anh/bst/ttnd.1.jpg')">
+                                Thêm vào giỏ hàng
+                        </button>
+                    </div>
+                    <div class="card-body text-center">
+                        <h6 class="card-title">Đồ bộ thoải mái</h6>
+                        <p class="text-muted fw-bold">Giá: 156.000 Đ</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">   
+        <div class="modal-content">
+            <div class="modal-header bg-light">
+                <h5 class="modal-title text-uppercase fw-bold">Giỏ hàng TWEE Store</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead>
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Đơn giá</th>
+                            <th>SL</th>
+                            <th>Thành tiền</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody id="cartItems"></tbody>
+                    </table>
+                </div>
+
+                <div class="d-flex justify-content-end align-items-center mt-3">
+                    <h5 class="mb-0 me-2">Tổng cộng:</h5>
+                    <h4 class="text-danger fw-bold" id="cartTotal">0đ</h4>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tiếp tục xem</button>
+                <button type="button" class="btn btn-danger" id="btnProceedToCheckout">Đặt hàng ngay</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title fw-bold">Thông tin giao hàng</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+
+                    <div class="mb-3"><label>Tên khách hàng</label>
+                        <label for="customerName"></label>
+                        <input type="text"  class="form-control" id="customerName" required>
+                    </div>
+
+                    <div class="mb-3"><label>Số điện thoại</label>
+                        <label for="customerPhone"></label>
+                        <input type="tel" class="form-control" id="customerPhone" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label>Địa chỉ giao hàng</label>
+                        <label for="customerAddress"></label>
+                        <textarea class="form-control" id="customerAddress"required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                          <label>Thanh toán</label>
+                          <label for="paymentMethod"></label>
+                        <select class="form-select" id="paymentMethod">
+                          <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                          <option value="banking">Chuyển khoản ngân hàng</option>
+                        </select>
+                    </div>
+
+                    <div id="bankingInfo" class="alert alert-info d-none">
+                        <strong>Vietcombank</strong>
+                        <br>STK: 9999888866<br>Chủ TK: TWEE FASHION
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="btnBackToCart">Quay lại giỏ</button>
+                <button type="button" class="btn btn-success" id="btnConfirmOrder">Xác nhận đặt hàng</button>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    // --- LOGIC GIỎ HÀNG ĐỒNG BỘ ---
+    // 1. Khởi tạo
+    let cart = JSON.parse(localStorage.getItem('tweeCart')) || [];
+
+    function formatCurrency(amount) {
+        return parseInt(amount).toLocaleString('vi-VN') + 'đ';
+    }
+
+    function parseCurrency(str) {
+        return parseFloat(str.toString().replace(/[^0-9]/g, ''));
+    }
+
+    function openCartModal() {
+        const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('cartModal'));
+        modal.show();
+    }
+
+    // Lưu
+    function saveCartToStorage() {
+        localStorage.setItem('tweeCart', JSON.stringify(cart));
+    }
+
+    // Thêm vào giỏ
+    function addToCart(name, priceStr, imgUrl) {
+        if (event) event.preventDefault();
+        const quantityToAdd = 1; // Mặc định là 1 ở trang bộ sưu tập
+
+        const existingItem = cart.find(item => item.name === name);
+        if (existingItem) {
+            existingItem.quantity += quantityToAdd;
+        } else {
+            cart.push({name: name, price: parseCurrency(priceStr), img: imgUrl, quantity: quantityToAdd});
+        }
+
+        saveCartToStorage(); // Lưu
+        renderCart();
+        openCartModal();
+    }
+
+    // Render
+    function renderCart() {
+        const container = document.getElementById('cartItems');
+        const totalEl = document.getElementById('cartTotal');
+        const countEl = document.getElementById('floatingCartCount');
+
+        let totalCount = 0;
+        cart.forEach(item => totalCount += item.quantity);
+        if (countEl) {
+            countEl.innerText = totalCount;
+            countEl.style.display = totalCount > 0 ? 'flex' : 'none';
+        }
+
+        if (!container || !totalEl) return;
+        container.innerHTML = '';
+        if (cart.length === 0) {
+            container.innerHTML = '<tr><td colspan="5" class="text-center">Giỏ trống</td></tr>';
+            totalEl.innerText = '0đ';
+            return;
+        }
+
+        let total = 0;
+        cart.forEach((item, index) => {
+            const itemTotal = item.price * item.quantity;
+            total += itemTotal;
+            container.innerHTML += `<tr><td><div class="d-flex align-items-center"><img src="${item.img}" style="width:50px; margin-right:10px;" alt=""><span>${item.name}</span></div></td><td>${formatCurrency(item.price)}</td><td><input type="number" class="form-control form-control-sm" value="${item.quantity}" min="1" style="width:60px;" onchange="updateQuantity(${index}, this.value)"></td><td>${formatCurrency(itemTotal)}</td><td><button class="btn btn-sm btn-outline-danger" onclick="removeFromCart(${index})">Xóa</button></td></tr>`;
+        });
+        totalEl.innerText = formatCurrency(total);
+    }
+
+    function updateQuantity(index, newQty) {
+        if (newQty < 1) newQty = 1;
+        cart[index].quantity = parseInt(newQty);
+        saveCartToStorage();
+        renderCart();
+    }
+
+    function removeFromCart(index) {
+        if (confirm('Xóa?')) {
+            cart.splice(index, 1);
+            saveCartToStorage();
+            renderCart();
+        }
+    }
+
+    // DOM Loaded
+    document.addEventListener('DOMContentLoaded', function () {
+        renderCart(); // Render ngay khi load
+
+        const cartModalEl = document.getElementById('cartModal');
+        const checkoutModalEl = document.getElementById('checkoutModal');
+        const phoneInput = document.getElementById('customerPhone');
+        if (phoneInput) phoneInput.addEventListener('input', (e) => {
+            let v = e.target.value.replace(/[^0-9]/g, '');
+            if (v.length > 10) v = v.slice(0, 10);
+            e.target.value = v;
+        });
+
+        document.getElementById('btnProceedToCheckout').addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert("Giỏ trống!");
+                return;
+            }
+            bootstrap.Modal.getOrCreateInstance(cartModalEl).hide();
+            bootstrap.Modal.getOrCreateInstance(checkoutModalEl).show();
+        });
+
+        document.getElementById('btnBackToCart').addEventListener('click', () => {
+            bootstrap.Modal.getOrCreateInstance(checkoutModalEl).hide();
+            bootstrap.Modal.getOrCreateInstance(cartModalEl).show();
+        });
+        document.getElementById('paymentMethod').addEventListener('change', (e) => {
+            const info = document.getElementById('bankingInfo');
+            if (e.target.value === 'banking') info.classList.remove('d-none'); else info.classList.add('d-none');
+        });
+
+        document.getElementById('btnConfirmOrder').addEventListener('click', () => {
+            const name = document.getElementById('customerName').value;
+            const phone = document.getElementById('customerPhone').value;
+            const addr = document.getElementById('customerAddress').value;
+            if (!name || !phone || !addr) {
+                alert("Thiếu thông tin!");
+                return;
+            }
+
+            const newOrder = {
+                id: 'DH' + Date.now(),
+                customer: {name, phone, address: addr},
+                items: cart,
+                total: document.getElementById('cartTotal').innerText,
+                date: new Date().toLocaleString('vi-VN'),
+                status: 'Chờ xử lý'
+            };
+            let orders = JSON.parse(localStorage.getItem('tweeOrders')) || [];
+            orders.push(newOrder);
+            localStorage.setItem('tweeOrders', JSON.stringify(orders));
+            alert("Thành công! Mã: " + newOrder.id);
+
+            cart = [];
+            saveCartToStorage(); // Xóa kho chung
+            renderCart();
+            document.getElementById('checkoutForm').reset();
+            bootstrap.Modal.getOrCreateInstance(checkoutModalEl).hide();
+        });
+    });
+</script>
+</body>
+</html>

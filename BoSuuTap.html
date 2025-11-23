@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bộ Sưu Tập Thời Trang Trẻ Em - Carousel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+<style>
+*{
+ margin: 0px;
+ padding: 0px;
+}
+html {
+  scroll-behavior: smooth; 
+}
+
+/**--------MENU-------**/
+.menu-page{
+    padding: 45px 15px;
+    height:120px ;
+    justify-content: space-between;
+    display: flex; 
+    
+}
+
+.nav{
+    color: none;
+}
+.nav-item{
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+.nav-item a{
+    font-size:18px;
+    padding: 10px;
+    text-decoration: none;
+    color:#064789;
+    font-weight: 750;
+    height: 40px;
+    display: inline;
+}
+.nav-item a:hover{
+    background-color: #ebf2f3;
+    color: #064789 ;
+    padding: 10px;
+    border-radius:4px;
+}
+.cart-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-icon i {
+  color: #064789;
+  font-size: 26px;
+}
+
+.cart-icon .cart-value {
+  position: absolute;
+  top: -6px;
+  right: -5px;
+  background-color: #F2F0D5;
+  color: #064789;
+  font-size: 12px;
+  font-weight: bold;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 20px;
+  box-shadow: 0 0 3px rgba(0,0,0,0.2);
+}
+/**------Menu Mobile------*/
+#mobileNav .list-group-item:hover {
+    background-color: #b3cfe5 ;  
+    color: #064789;              
+    font-weight: bold ;
+    border-left: 5px solid #064789;    
+    transition: all 0.3s ease ;
+    padding-left: 20px ;        
+}
+
+
+
+   /**--------BỘ SƯU TẬP------**/
+:root {
+    --blue-soft: #a8c8f0;
+    --blue-hero: #4a8bd6;
+    --blue-bold: #2a5fa0;
+}
+.nutnhan{
+    color:white;
+    text-decoration-line: none;
+}
+.hero-section {
+    background: linear-gradient(to bottom right, #f4f7fc, #d8e7f7);
+    height: 70vh;
+    padding-top: 120px;
+    color: #fff;
+}
+.hero-button {
+    background: var(--blue-bold);
+    color: #fff;
+    border-radius: 30px;
+    padding: 10px 30px;
+    transition: 0.3s;
+}
+.hero-button:hover {
+    background: #1c4a7d;
+    transform: translateY(-3px);
+}
+.section-title {
+    color: var(--blue-bold);
+    font-size: 2rem;
+}
+ .product-card {
+            overflow: hidden;
+            position: relative;
+        }
+        .img-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+        .view-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0; 
+            transition: opacity 0.3s;
+            z-index: 10;
+            padding: 10px 20px;
+            font-weight: bold;
+        }
+        .img-wrapper img {
+            transition: opacity 0.3s, transform 0.3s; 
+            width: 100%; 
+            height: auto;
+        }
+        .product-card:hover .img-wrapper img {
+            opacity: 0.6; 
+            transform: scale(1.05);
+
+             
+        }
+        .product-card:hover .view-btn {
+            opacity: 1; 
+        }
+
+.le{
+   padding-top: 30px;
+   padding-bottom: 50px;
+}   
+
+/**-----------FOOTER--------**/
+  .footer-modern{
+    background-color: #b3cfe5;
+    color:#064789;
+}
+.footer-modern h4 {
+  font-size: 1.1rem;
+}
+
+.footer-modern ul li a {
+  color: #403E3E;	
+  transition: color .3s;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.footer-modern ul li a:hover {
+  color: white;
+}
+
+/* Social icon */
+.footer-modern .social-btn {
+  width: 2.625rem;
+  height: 2.625rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color:#064789;
+  color:white;
+  font-size: 1.2rem;
+  transition: all .3s;
+  margin-top: 20px;
+}
+
+.footer-modern .social-btn:hover {
+  background-color: white;
+  color: black;
+}
+
+/*------MOBILE-TABLET----*/
+@media (max-width: 767.98px) {
+  .d-none.d-md-flex { display: none !important; }
+}
+@media (min-width: 768px) {
+  header.d-md-none { display: none !important; }
+}
+
+/* Làm banner và các section đẹp hơn trên mobile */
+@media (max-width: 767.98px) {
+  
+  /* ----- FOOTER ----- */
+  .footer-modern .footer-column {
+    text-align: center;
+  }
+  .footer-modern .social {
+    justify-content: center;
+  }
+}
+
+</style>
+<body>
+<!-------------MENU------------>
+       <div class="d-none d-md-flex" style="background-color: #b3cfe5;">
+   <div class="logo" style="width: 15%;">
+         <img src="anh/anh/logotrongsuot.png" alt="Logo" style="width: 200px;height: 135px;" />
+    </div>
+      <div class="menu-page row" style="width: 85%;">
+        <div class="col-8 menu">
+           <ul class="nav">
+              <li class="nav-item"><a href="index.html">TRANG CHỦ</a></li>
+              <li class="nav-item"><a href="ChuyenNhaTwee.html">CHUYỆN NHÀ TWEE</a></li>
+              <li class="nav-item"><a href="SanPham.html">SẢN PHẨM</a></li>
+              <li class="nav-item"><a href="BoSuuTap.html">BỘ SƯU TẬP</a></li>
+              <li class="nav-item"><a href="DichVu.html">DỊCH VỤ</a> </li>
+           </ul>
+        </div>
+        <div class="col-4 contact menu">
+           <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a href="#" class="nav-link cart-icon position-relative">
+              <i class="fa-solid fa-bag-shopping fa-lg"></i>
+              <span class="cart-value">0</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="DangNhap.html" id="loginText" class="nav-link">ĐĂNG NHẬP/ĐĂNG KÍ </a>
+            </li>
+            <li class="nav-item">
+              <a href="DangNhapQuanLy.html" class="nav-link">
+                  <i class="fas fa-store-alt" style="color:  #064789;"></i>
+              </a>
+            </li>
+         </ul>
+        </div>
+  </div>
+</div>
+
+<!-- MENU MOBILE MỚI (chỉ hiện dưới 768px) -->
+<header class="d-md-none sticky-top shadow-sm" style="background:#b3cfe5;">
+  <div class="container-fluid">
+    <div class="row align-items-center py-2">
+      <div class="col-4">
+        <img src="anh/anh/logotrongsuot.png" alt="Logo" class="img-fluid" style="max-height:70px;">
+      </div>
+      <div class="col-8 text-end">
+        <a href="#" class="me-3 position-relative">
+          <i class="fa-solid fa-bag-shopping fa-xl" style="color:#064789"></i>
+          <span class="cart-value position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">0</span>
+        </a>
+        <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#mobileNav">
+          <i class="fa-solid fa-bars fa-xl"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!----------- Offcanvas Menu Mobile ------------>
+<div class="offcanvas offcanvas-end" tabindex="-1" id="mobileNav">
+  <div class="offcanvas-header">
+    <h5 class="fw-bold">TWEE</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-group list-group-flush fs-4">
+      <a href="index.html"  class="list-group-item list-group-item-action py-3">TRANG CHỦ</a>
+      <a href="ChuyenNhaTwee.html"  class="list-group-item list-group-item-action py-3">CHUYỆN NHÀ TWEE</a>
+      <a href="SanPham.html" class="list-group-item list-group-item-action py-3">SẢN PHẨM</a>
+      <a href="BoSuuTap.html" class="list-group-item list-group-item-action py-3">BỘ SƯU TẬP</a>
+      <a href="DichVu.html" class="list-group-item list-group-item-action py-3">DỊCH VỤ</a>
+      <a href="DangNhap.html" class="list-group-item list-group-item-action py-3 text-primary fw-bold">ĐĂNG NHẬP/ĐĂNG KÍ</a>
+       <a href="DangNhapQuanLy.html" class="list-group-item list-group-item-action py-3 text-danger fw-bold">
+         <i class="fas fa-crown "></i>QUẢN LÝ CỬA HÀNG
+      </a>
+    </ul>
+  </div>
+</div>
+
+
+<!-- PANEL GIỎ HÀNG HIỆN RA -->
+<div id="cart-panel" 
+     style="position:fixed;top:0;right:-400px;width:360px;height:100%;
+            background:#fcfdf2;box-shadow:-2px 0 6px rgba(0,0,0,0.2);
+            transition:right 0.3s ease;padding:16px;z-index:2000;
+            overflow-y:auto;border-radius: 5px">
+  <h3 style="margin-top:0;">Giỏ hàng của bạn</h3>
+  <ul id="cart-list" style="list-style:none;padding:0;margin:0;"></ul>
+  <hr>
+  <div style="display:flex;justify-content:space-between;font-weight:bold;">
+    <span>Tổng tiền:</span>
+    <span id="cart-total">0₫</span>
+  </div>
+
+  <button id="clear-cart"
+          style="margin-top:10px;width:100%;padding:10px;background:#b3cfe5;
+                 color:black;border:none;border-radius:6px;cursor:pointer;">
+    Xóa tất cả
+  </button>
+
+  <button id="send-request"
+          style="margin-top:10px;width:100%;padding:10px;background:#f9e7d2;
+                 color:black;border:none;border-radius:6px;cursor:pointer;">
+    Gửi yêu cầu
+  </button>
+
+  <!-- Dòng thông báo -->
+  <p id="success-message" style="display:none;margin-top:8px;color:green;font-weight:bold;text-align:center;">
+    Đã gửi yêu cầu thành công!
+  </p>
+
+  <button id="close-cart"
+          style="margin-top:10px;width:100%;padding:10px;background:#63adf7;
+                 color:white;border:none;border-radius:6px;cursor:pointer;">
+    Đóng
+  </button>
+</div>
+
+    <!------BỘ SƯU TẬP----->
+    <section class="hero-section text-center d-flex align-items-center">
+        <div class="container">
+            <h1 class="display-4 fw-bolder mb-3 text-dark">KHÁM PHÁ BỘ SƯU TẬP 2025</h1>
+            <p class="lead fade-in-2 text-dark">
+                Thời trang an toàn, thoáng mát, phong cách hiện đại dành cho bé yêu.
+            </p>
+            <a href="#bst" class="btn hero-button btn-lg mt-3 nutnhan">XEM BỘ SƯU TẬP</a>
+        </div>
+    </section>
+
+    <section id="bst" class="py-5">
+        <div class="container">
+
+            <h2 class="text-center mb-4 fw-bold section-title">📸 3 BỘ SƯU TẬP CHÍNH 📸</h2>
+            <div class="row g-4">
+                 <div class="col md-4">
+                            <div class="card product-card shadow-sm" style="background-color: #e4ebf5;">
+                                <div class="img-wrapper">
+                                    <div>
+                                            <img src="anh/bst/td.1.jpg" class="card-img-top" alt="Twee hoa hồng nhỏ" style="width:100%;height:400px;object-fit: cover">
+                                    </div>
+                                    <div style="padding-top:10px; background-color: #e4ebf5;">
+                                        <h5 class="card-title text-center pt-3 pb-3">❄️ THU-ĐÔNG ẤM ÁP</h5>
+
+                                    </div> 
+                                    <button class="btn btn-primary view-btn" data-bs-toggle="modal" data-bs-target="#productModal3">
+                                        <a href="ChiTietBoSuuTap.html#thu-dong" class="btn btn-primary">
+                                            Khám Phá
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                <div class="col md-4">
+                            <div class="card product-card shadow-sm" style="background-color:#f5e4eb;">
+                                <div class="img-wrapper">
+                                    <div>
+                                            <img src="anh/bst/xh.jpg" class="card-img-top" alt="Twee hoa hồng nhỏ" style="width:100%;height:400px;object-fit: cover">
+                                    </div>
+                                    <div style="padding-top:10px;">
+                                        <h5 class="card-title text-center pt-3 pb-3">☀️ XUÂN-HÈ TƯƠI MỚI</h5>
+
+                                    </div> 
+                                    <button class="btn btn-primary view-btn" >
+                                        <a href="ChiTietBoSuuTap.html#xuan-he" class="btn btn-primary">
+                                            Khám Phá
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                <div class="col md-4">
+                            <div class="card product-card shadow-sm" style="background-color: #d1eed5;">
+                                <div class="img-wrapper">
+                                    <div>
+                                            <img src="anh/bst/ttnd.jpg" class="card-img-top" alt="Twee hoa hồng nhỏ" style="width:100%;height:400px;object-fit: cover">
+                                    </div>
+                                    <div style="padding-top:10px; ">
+                                        <h5 class="card-title text-center pt-3 pb-3">🏃 THỂ THAO NĂNG ĐỘNG</h5>
+
+                                    </div> 
+                                    <button class="btn btn-primary view-btn" data-bs-toggle="modal" data-bs-target="#productModal3">
+                                        <a href="ChiTietBoSuuTap.html#the-thao" class="btn btn-primary">
+                                            Khám Phá
+                                        </a>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+            </div>   
+        </div>
+    </section>
+      <!-- FOOTER -->
+  <footer class="footer-modern py-5" >
+  <div class="container">
+    <div class="row justify-content-between">
+      <div class="col-md-3 mb-4 footer-column">
+        <h4 class="fw-bold text-uppercase mb-3">THÔNG TIN</h4>
+        <ul class="list-unstyled">
+          <li><a href="ChuyenNhaTwee.html">Câu Chuyện Của Chúng Tôi</a></li>
+          <li><a href="ChuyenNhaTwee.html">Tin Tức TWEE</a></li>
+          <li><a href="DichVu.html">Miễn Phí Giao Hàng</a></li>
+          <li><a href="DichVu.html">Đơn Lớn Giá Hời</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 mb-4 footer-column">
+        <h4 class="fw-bold text-uppercase mb-3">Danh Mục Sản Phẩm</h4>
+       <ul class="list-unstyled">
+          <li><a href="ChiTietBoSuuTap.html#dolen">Đồ len ấm áp</a></li>
+          <li><a href="ChiTietBoSuuTap.html#sanhdieu">Set dạo phố cho nam sành điệu</a></li>
+          <li><a href="product6.html">Yếm Thỏ hồng hoa nhí</a></li>
+          <li><a href="product5.html">Set đồ ngủ cổ sen ngọt ngào</a></li>
+          <li><a href="product8.html">Set Thu Đông Búp Bê</a></li>
+
+        </ul>
+      </div>
+
+      <div class="col-md-3 mb-4 footer-column">
+        <h4 class="fw-bold text-uppercase mb-3">Chính Sách</h4>
+        <ul class="list-unstyled">
+          <li><a href="ChinhSachMuaHang.html">Chính Sách Mua Hàng</a></li>
+          <li><a href="ChinhSachBaoMatThongTin.html">Chính Sách Bảo Mật Thông Tin</a></li>
+        </ul>
+      </div>
+
+      <div class="col-md-3 mb-4 footer-column">
+        <h4 class="fw-bold text-uppercase mb-3">Liên Kết Nhanh</h4>
+        <ul class="list-unstyled">
+          <li><a href="index.html">Trang Chủ</a></li>
+          <li><a href="ChuyenNhaTwee.html">Chuyện Nhà Twee</a></li>
+          <li><a href="SanPham.html">Sản Phẩm</a></li>
+          <li><a href="BoSuuTap.html">Bộ Sưu Tập</a></li>
+          <li><a href="DichVu.html">Dịch Vụ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="my-4">
+
+    <div class="d-flex flex-wrap justify-content-between align-items-center">
+      <div>
+        <h2 class="fw-bold text-uppercase mb-2">TWEE</h2>
+        <p class="mb-0 small">
+          xxx Lê Trọng Tấn, Phường Tây Thạnh, Quận Tân Phú, TP.HCM.<br>
+          Điện thoại: 0909.xxx.xxx — Email: twee@gmail.com
+		  <br>Giờ hoạt động: 8h-21h hằng ngày.
+        </p>
+      </div>
+
+      <div class="social d-flex gap-3 mt-3 mt-md-0">
+        <a href="#" class="social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+        <a href="#" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" class="social-btn"><i class="fa-brands fa-tiktok"></i></a>
+      </div>
+    </div>
+
+    <hr class="mt-4">
+    <p class="text-center mt-5"><b>© 2025 TWEE. All rights reserved.</b></p>
+  </div>
+</footer>
+    
+     <script src="JS_DangNhap.js"></script>
+    <script src="JS_GioHang.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

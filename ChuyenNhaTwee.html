@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Chuyện Nhà Twee</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      html {
+        scroll-behavior: smooth; /* chuyển động mượt khi cuộn */
+      }
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      @keyframes slideUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      body {
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        background: #f7f9fc;
+        color: #333;
+        line-height: 1.6;
+      }
+      /**CHUYỆN NHÀ TWEE **/
+
+      .header-twee {
+        background: #f5dbbe;
+        text-align: center;
+        padding: 35px 20px;
+        border-bottom: 4px solid #b3cfe5;
+        margin-bottom: 20px;
+      }
+      header h1 {
+        color: black;
+        margin: 0;
+      }
+
+      section {
+        padding: 10px 10px;
+        max-width: 900px;
+        margin: auto;
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        margin-bottom: 25px;
+      }
+      section p {
+        margin-top: 12px;
+        font-weight: bold;
+        justify-content: center;
+      }
+      section:hover {
+        transform: translateY(-6px) scale(1.02);
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+        border-left: 5px solid #b3cfe5;
+      }
+      h5 .text-center {
+        color: #e49c4a;
+        padding-left: 8px;
+        font-weight: bold;
+        margin-top: 5px;
+      }
+      ul {
+        margin: 0;
+        padding-left: 20px;
+        list-style: none;
+      }
+      li {
+        margin-bottom: 6px;
+      }
+      .img {
+        height: 200px;
+        width: 200px;
+        object-fit: cover;
+      }
+
+      /**CHUYỆN NHÀ TWEE MOBILE**/
+      /* ==== ABOUT BLOCK - ĐẸP GIỐNG DESKTOP TRÊN MOBILE ==== */
+      .about-block {
+        background: #fff;
+        padding: 30px 25px;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      }
+      .about-block:hover {
+        border-left: 5px solid #b3cfe5;
+      }
+
+      .about-img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Trên mobile: ảnh nhỏ hơn một chút cho đẹp */
+      @media (max-width: 767.98px) {
+        .about-img {
+          width: 160px;
+          height: 160px;
+          margin: 0 auto 15px; /* Căn giữa ảnh trên mobile */
+          display: block;
+        }
+        .about-block {
+          padding: 25px 20px;
+        }
+        .about-block h5 {
+          font-size: 18px;
+          margin-left: 0; /* Bỏ margin-left để căn giữa */
+          color: #e49c4a !important;
+          text-align: center; /* Căn giữa tiêu đề */
+          margin-bottom: 15px;
+        }
+        .about-block p {
+          font-size: 0.95rem;
+          line-height: 1.7; /* Tăng line-height cho dễ đọc hơn */
+          text-align: justify; /* Căn đều văn bản cho dễ đọc */
+          margin-bottom: 12px; /* Thêm khoảng cách giữa các đoạn */
+        }
+        .ps-md-4 {
+          padding-left: 0 !important; /* Đảm bảo không có padding left trên mobile */
+        }
+        .ps-md-4 p {
+          margin-left: 0 !important; /* Bỏ indent trên mobile để văn bản sát lề */
+          padding: 0; /* Bỏ padding thêm, để mặc định */
+          text-align: justify;
+        }
+        .header-twee {
+          padding: 25px 15px; /* Giảm padding header trên mobile */
+        }
+        .header-twee h1 {
+          font-size: 1.8rem; /* Giảm kích thước tiêu đề */
+        }
+        .header-twee p {
+          font-size: 1.1rem; /* Giảm font-size cho quote */
+        }
+        section {
+          padding: 15px 15px; /* Tăng padding section trên mobile cho thoáng */
+          margin-bottom: 20px;
+        }
+        /* Đảm bảo row stack đúng cách trên mobile */
+        .about-block .row {
+          flex-direction: column !important;
+          align-items: center;
+        }
+        .about-block .col-3,
+        .about-block .col-9 {
+          width: 100%;
+          text-align: center;
+        }
+      }
+      /**Menu**/
+      .menu-page {
+        padding: 45px 15px;
+        height: 120px;
+        justify-content: space-between;
+        display: flex;
+      }
+      .nav {
+        color: none;
+      }
+      .nav-item {
+        margin-left: 5px;
+        margin-top: 5px;
+      }
+
+      .nav-item a {
+        font-size: 18px;
+        padding: 10px;
+        text-decoration: none;
+        color: #064789;
+        font-weight: 750;
+        height: 40px;
+        display: inline;
+      }
+      .nav-item a:hover {
+        background-color: #ebf2f3;
+        color: #064789;
+        padding: 10px;
+        border-radius: 4px;
+      }
+      .cart-icon {
+        position: relative;
+        display: inline-block;
+      }
+
+      .cart-icon i {
+        color: #064789;
+        font-size: 26px;
+      }
+
+      .cart-icon .cart-value {
+        position: absolute;
+        top: -6px;
+        right: -5px;
+        background-color: #f2f0d5;
+        color: #064789;
+        font-size: 12px;
+        font-weight: bold;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 20px;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+      }
+      /**Mobile**/
+      #mobileNav .list-group-item:hover {
+        background-color: #b3cfe5 !important; /* Màu nền xanh nhạt giống header */
+        color: #064789 !important; /* Màu chữ đậm */
+        font-weight: bold !important;
+        border-left: 5px solid #064789 !important; /* Viền trái nổi bật */
+        transition: all 0.3s ease !important;
+        padding-left: 20px !important; /* Đẩy nội dung vào chút cho đẹp */
+      }
+
+      /**FOOTER**/
+      .footer-modern {
+        background-color: #b3cfe5;
+        color: #064789;
+      }
+      .footer-modern h4 {
+        font-size: 1.1rem;
+      }
+
+      .footer-modern ul li a {
+        color: #403e3e;
+        transition: color 0.3s;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .footer-modern ul li a:hover {
+        color: white;
+      }
+
+      /* Social icon */
+      .footer-modern .social-btn {
+        width: 2.625rem;
+        height: 2.625rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background-color: #064789;
+        color: white;
+        font-size: 1.2rem;
+        transition: all 0.3s;
+        margin-top: 20px;
+      }
+
+      .footer-modern .social-btn:hover {
+        background-color: white;
+        color: black;
+      }
+      /**mobile**/
+
+      @media (max-width: 767.98px) {
+        .d-none.d-md-flex {
+          display: none !important;
+        }
+        .footer-modern h4 {
+          font-size: 1rem; /* Giảm font-size header footer trên mobile */
+        }
+        .footer-modern ul li {
+          font-size: 0.9rem; /* Giảm font-size list items */
+        }
+        .footer-modern p {
+          font-size: 0.85rem; /* Giảm font-size address */
+          text-align: center;
+        }
+      }
+      @media (min-width: 768px) {
+        header.d-md-none {
+          display: none !important;
+        }
+      }
+
+      /* Làm banner và các section đẹp hơn trên mobile */
+      @media (max-width: 767.98px) {
+        .carousel-item img {
+          height: 50vh !important;
+          object-fit: cover;
+        }
+        .section-row {
+          flex-direction: column;
+          padding: 10px !important;
+        }
+        section {
+          max-width: 100% !important;
+          margin: 15px auto;
+        }
+        .img-jpg {
+          width: 100% !important;
+          height: 200px !important;
+        }
+        .product-card .view-btn {
+          font-size: 14px;
+          padding: 8px 16px;
+        }
+        /* ----- FOOTER ----- */
+        .footer-modern .footer-column {
+          text-align: center;
+        }
+        .footer-modern .social {
+          justify-content: center;
+        }
+        /* Tối ưu cart panel trên mobile: full width và điều chỉnh */
+        #cart-panel {
+          width: 100% !important;
+          right: -100% !important;
+        }
+        /* Thêm touch-friendly cho buttons trên mobile */
+        button,
+        a {
+          min-height: 44px; /* Chuẩn Apple cho touch targets */
+        }
+      }
+
+      /* Cải thiện readability trên mobile nhỏ hơn (dưới 576px) */
+      @media (max-width: 575.98px) {
+        .about-block {
+          padding: 20px 15px;
+        }
+        .about-block p {
+          font-size: 0.9rem;
+        }
+        .header-twee p {
+          font-size: 1rem;
+        }
+        .about-block h5 {
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-----------MENU------------>
+    <div class="d-none d-md-flex" style="background-color: #b3cfe5">
+      <div class="logo" style="width: 15%">
+        <img
+          src="anh/anh/logotrongsuot.png"
+          alt="Logo"
+          style="width: 200px; height: 135px"
+        />
+      </div>
+      <div class="menu-page row" style="width: 85%">
+        <div class="col-8 menu">
+          <ul class="nav">
+            <li class="nav-item"><a href="index.html">TRANG CHỦ</a></li>
+            <li class="nav-item">
+              <a href="ChuyenNhaTwee.html">CHUYỆN NHÀ TWEE</a>
+            </li>
+            <li class="nav-item"><a href="SanPham.html">SẢN PHẨM</a></li>
+            <li class="nav-item"><a href="BoSuuTap.html">BỘ SƯU TẬP</a></li>
+            <li class="nav-item"><a href="DichVu.html">DỊCH VỤ</a></li>
+          </ul>
+        </div>
+        <div class="col-4 contact menu">
+          <ul class="nav justify-content-end">
+            <li class="nav-item">
+              <a href="#" class="nav-link cart-icon position-relative">
+                <i class="fa-solid fa-bag-shopping fa-lg"></i>
+                <span class="cart-value">0</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="DangNhap.html" id="loginText" class="nav-link"
+                >ĐĂNG NHẬP/ĐĂNG KÍ
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="DangNhapQuanLy.html" class="nav-link">
+                <i class="fas fa-store-alt" style="color: #064789"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!---------- MENU MOBILE MỚI (chỉ hiện dưới 768px) -->
+    <header class="d-md-none sticky-top shadow-sm" style="background: #b3cfe5">
+      <div class="container-fluid">
+        <div class="row align-items-center py-2">
+          <div class="col-4">
+            <img
+              src="anh/anh/logotrongsuot.png"
+              alt="Logo"
+              class="img-fluid"
+              style="max-height: 70px"
+            />
+          </div>
+          <div class="col-8 text-end">
+            <a href="#" class="me-3 position-relative">
+              <i
+                class="fa-solid fa-bag-shopping fa-xl"
+                style="color: #064789"
+              ></i>
+              <span
+                class="cart-value position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                >0</span
+              >
+            </a>
+            <button
+              class="btn"
+              data-bs-toggle="offcanvas"
+              data-bs-target="#mobileNav"
+            >
+              <i class="fa-solid fa-bars fa-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!----------- Offcanvas Menu Mobile -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileNav">
+      <div class="offcanvas-header">
+        <h5 class="fw-bold">TWEE</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+        ></button>
+      </div>
+      <div class="offcanvas-body">
+        <ul class="list-group list-group-flush fs-4">
+          <a
+            href="index.html"
+            class="list-group-item list-group-item-action py-3"
+            >TRANG CHỦ</a
+          >
+          <a
+            href="ChuyenNhaTwee.html"
+            class="list-group-item list-group-item-action py-3"
+            >CHUYỆN NHÀ TWEE</a
+          >
+          <a
+            href="SanPham.html"
+            class="list-group-item list-group-item-action py-3"
+            >SẢN PHẨM</a
+          >
+          <a
+            href="BoSuuTap.html"
+            class="list-group-item list-group-item-action py-3"
+            >BỘ SƯU TẬP</a
+          >
+          <a
+            href="DichVu.html"
+            class="list-group-item list-group-item-action py-3"
+            >DỊCH VỤ</a
+          >
+          <a
+            href="DangNhap.html"
+            class="list-group-item list-group-item-action py-3 text-primary fw-bold"
+            >ĐĂNG NHẬP/ĐĂNG KÍ</a
+          >
+          <a
+            href="DangNhapQuanLy.html"
+            class="list-group-item list-group-item-action py-3 text-danger fw-bold"
+          >
+            <i class="fas fa-crown"></i>QUẢN LÝ CỬA HÀNG
+          </a>
+        </ul>
+      </div>
+    </div>
+
+    <!------- PANEL GIỎ HÀNG HIỆN RA -->
+    <div
+      id="cart-panel"
+      style="
+        position: fixed;
+        top: 0;
+        right: -400px;
+        width: 360px;
+        height: 100%;
+        background: #fcfdf2;
+        box-shadow: -2px 0 6px rgba(0, 0, 0, 0.2);
+        transition: right 0.3s ease;
+        padding: 16px;
+        z-index: 2000;
+        overflow-y: auto;
+        border-radius: 5px;
+      "
+    >
+      <h3 style="margin-top: 0">Giỏ hàng của bạn</h3>
+      <ul id="cart-list" style="list-style: none; padding: 0; margin: 0"></ul>
+      <hr />
+      <div
+        style="display: flex; justify-content: space-between; font-weight: bold"
+      >
+        <span>Tổng tiền:</span>
+        <span id="cart-total">0₫</span>
+      </div>
+
+      <button
+        id="clear-cart"
+        style="
+          margin-top: 10px;
+          width: 100%;
+          padding: 10px;
+          background: #b3cfe5;
+          color: black;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+        "
+      >
+        Xóa tất cả
+      </button>
+
+      <button
+        id="send-request"
+        style="
+          margin-top: 10px;
+          width: 100%;
+          padding: 10px;
+          background: #f9e7d2;
+          color: black;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+        "
+      >
+        Gửi yêu cầu
+      </button>
+
+      <!-- Dòng thông báo -->
+      <p
+        id="success-message"
+        style="
+          display: none;
+          margin-top: 8px;
+          color: #6d9fd1;
+          font-weight: bold;
+          text-align: center;
+        "
+      >
+        Đã gửi yêu cầu thành công!
+      </p>
+
+      <button
+        id="close-cart"
+        style="
+          margin-top: 10px;
+          width: 100%;
+          padding: 10px;
+          background: #63adf7;
+          color: white;
+          border: none;
+          border-radius: 6px;
+          cursor: pointer;
+        "
+      >
+        Đóng
+      </button>
+    </div>
+
+    <!---------------CHUYỆN NHÀ TWEE-->
+    <header class="header-twee">
+      <h1>CHUYỆN NHÀ TWEE</h1>
+      <p style="font-size: 23px; color: #666; padding-top: 10px">
+        <i
+          >“Dịu dàng từ yêu thương - gửi đến bé những bộ trang phục mềm mại và
+          an toàn nhất.”</i
+        >
+      </p>
+    </header>
+
+    <!-- TẤT CẢ 4 SECTION - ĐẸP GIỐNG NHAU TRÊN MOBILE & DESKTOP -->
+    <div class="container px-3 px-lg-0">
+      <!-- Section 1: Câu chuyện -->
+      <section class="about-block mb-5">
+        <div class="row align-items-center g-4">
+          <div class="col-3 text-center">
+            <img
+              src="anh/anh/chuyennhatwee.jpg"
+              alt="Câu chuyện"
+              class="about-img"
+            />
+            <h5 class="mt-3 fw-bold text-primary">Câu chuyện</h5>
+          </div>
+          <div class="col-9">
+            <div class="ps-md-4">
+              <p>
+                Twee được ra đời từ tình yêu dành cho những điều nhỏ bé và tinh
+                tế - nơi mỗi bộ trang phục trở thành câu chuyện về sự dịu dàng,
+                tự tin và hạnh phúc.
+              </p>
+              <p>
+                Ngay từ những thiết kế đầu tiên, Twee đặt trọn trái tim vào từng
+                đường kim mũi chỉ, mang đến cho bé cảm giác thoải mái, an toàn
+                và dễ thương nhất.
+              </p>
+              <p>
+                Trải qua thời gian, Twee không chỉ là một thương hiệu thời trang
+                mà còn là người bạn đồng hành của mẹ và bé trên hành trình lớn
+                lên và tỏa sáng mỗi ngày.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Sứ mệnh -->
+      <section class="about-block mb-5">
+        <div class="row align-items-center g-4">
+          <div class="col-3 text-center">
+            <img
+              src="anh/anh/chuyennhatwee1.jpg"
+              alt="Sứ mệnh"
+              class="about-img"
+            />
+            <h5 class="mt-3 fw-bold text-primary">Sứ mệnh</h5>
+          </div>
+          <div class="col-9">
+            <div class="ps-md-4">
+              <p>
+                Twee ra đời với sứ mệnh đồng hành cùng các gia đình Việt trong
+                hành trình nuôi dạy con.
+              </p>
+              <p>
+                Chúng tôi muốn mỗi bộ trang phục không chỉ là món đồ bé mặc, mà
+                còn là món quà gửi gắm sự quan tâm, tình yêu và niềm tự hào của
+                cha mẹ.
+              </p>
+              <p>
+                Twee mong muốn trở thành cầu nối - nơi tình yêu của mẹ và sự hồn
+                nhiên của bé gặp nhau trong từng sản phẩm, từng khoảnh khắc đáng
+                nhớ.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Vì sao nên chọn Twee -->
+      <section class="about-block mb-5">
+        <div class="row align-items-center g-4">
+          <div class="col-3 text-center">
+            <img
+              src="anh/anh/chuyennhatwee2.jpg"
+              alt="Vì sao chọn Twee"
+              class="about-img"
+            />
+            <h5 class="mt-3 fw-bold text-primary">Vì sao nên chọn Twee</h5>
+          </div>
+          <div class="col-9">
+            <div class="ps-md-4">
+              <p>
+                Chất liệu an toàn vải được chọn lọc kỹ càng, đảm bảo mềm mại và
+                thân thiện với làn da trẻ nhỏ.
+              </p>
+              <p>
+                Thiết kế tinh tế mẫu mã đa dạng, cập nhật xu hướng thời trang
+                mới nhất cho bé yêu.
+              </p>
+              <p>
+                Dịch vụ tận tâm giao hàng nhanh chóng, đổi trả linh hoạt, tư vấn
+                nhiệt tình 24/7.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Tầm nhìn -->
+      <section class="about-block mb-5">
+        <div class="row align-items-center g-4">
+          <div class="col-3 text-center">
+            <img
+              src="anh/anh/chuyennhatwee3.jpg"
+              alt="Tầm nhìn"
+              class="about-img"
+            />
+            <h5 class="mt-3 fw-bold text-primary">Tầm nhìn</h5>
+          </div>
+          <div class="col-9">
+            <div class="ps-md-4">
+              <p>
+                Twee được sinh ra từ ước mơ nhỏ - mang đến cho các bé yêu những
+                bộ quần áo xinh xắn, thoải mái và chất lượng nhất.
+              </p>
+              <p>
+                Mỗi chiếc áo, mỗi chiếc váy không chỉ là sản phẩm, mà là niềm
+                vui của mẹ, nụ cười của bé và những ký ức tuổi thơ thật ngọt
+                ngào.
+              </p>
+              <p>
+                Twee hướng đến trở thành người bạn thân thiết của mọi gia đình -
+                nơi cha mẹ an tâm và bé lớn lên trong thế giới thời trang an
+                toàn, đáng yêu và đầy yêu thương.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer-modern py-5">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col-md-3 mb-4 footer-column">
+            <h4 class="fw-bold text-uppercase mb-3">THÔNG TIN</h4>
+            <ul class="list-unstyled">
+              <li><a href="ChuyenNhaTwee.html">Câu Chuyện Của Chúng Tôi</a></li>
+              <li><a href="ChuyenNhaTwee.html">Tin Tức TWEE</a></li>
+              <li><a href="DichVu.html">Miễn Phí Giao Hàng</a></li>
+              <li><a href="DichVu.html">Đơn Lớn Giá Hời</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-3 mb-4 footer-column">
+            <h4 class="fw-bold text-uppercase mb-3">Danh Mục Sản Phẩm</h4>
+            <ul class="list-unstyled">
+              <li><a href="ChiTietBoSuuTap.html#dolen">Đồ len ấm áp</a></li>
+              <li>
+                <a href="ChiTietBoSuuTap.html#sanhdieu"
+                  >Set dạo phố cho nam sành điệu</a
+                >
+              </li>
+              <li><a href="product6.html">Yếm Thỏ hồng hoa nhí</a></li>
+              <li><a href="product5.html">Set đồ ngủ cổ sen ngọt ngào</a></li>
+              <li><a href="product8.html">Set Thu Đông Búp Bê</a></li>
+            </ul>
+          </div>
+
+          <div class="col-md-3 mb-4 footer-column">
+            <h4 class="fw-bold text-uppercase mb-3">Chính Sách</h4>
+            <ul class="list-unstyled">
+              <li><a href="ChinhSachMuaHang.html">Chính Sách Mua Hàng</a></li>
+              <li>
+                <a href="ChinhSachBaoMatThongTin.html"
+                  >Chính Sách Bảo Mật Thông Tin</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-3 mb-4 footer-column">
+            <h4 class="fw-bold text-uppercase mb-3">Liên Kết Nhanh</h4>
+            <ul class="list-unstyled">
+              <li><a href="index.html">Trang Chủ</a></li>
+              <li><a href="ChuyenNhaTwee.html">Chuyện Nhà Twee</a></li>
+              <li><a href="SanPham.html">Sản Phẩm</a></li>
+              <li><a href="BoSuuTap.html">Bộ Sưu Tập</a></li>
+              <li><a href="DichVu.html">Dịch Vụ</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <hr class="my-4" />
+
+        <div
+          class="d-flex flex-wrap justify-content-between align-items-center"
+        >
+          <div>
+            <h2 class="fw-bold text-uppercase mb-2">TWEE</h2>
+            <p class="mb-0 small">
+              xxx Lê Trọng Tấn, Phường Tây Thạnh, Quận Tân Phú, TP.HCM.<br />
+              Điện thoại: 0909.xxx.xxx — Email: twee@gmail.com
+              <br />Giờ hoạt động: 8h-21h hằng ngày.
+            </p>
+          </div>
+
+          <div class="social d-flex gap-3 mt-3 mt-md-0">
+            <a href="#" class="social-btn"
+              ><i class="fa-brands fa-facebook-f"></i
+            ></a>
+            <a href="#" class="social-btn"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="#" class="social-btn"
+              ><i class="fa-brands fa-tiktok"></i
+            ></a>
+          </div>
+        </div>
+
+        <hr class="mt-4" />
+        <p class="text-center mt-5"><b>© 2025 TWEE. All rights reserved.</b></p>
+      </div>
+    </footer>
+    <script src="JS_DangNhap.js"></script>
+    <script src="JS_GioHang.js"></script>
+  </body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập - TWEE Kids Clothing</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap&subset=vietnamese" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: linear-gradient(135deg, #eaf2ff, #ffffff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: #fff;
+      width: 420px;
+      padding: 50px 60px;
+      border-radius: 20px;
+      box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.1);
+     
+    }
+
+    .logo-img {
+      width: 180px;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      color: #333;
+      font-size: 22px;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin: 10px 0;
+      border: 1px solid #cdd9f3;
+      border-radius: 8px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #5a9bff;
+      box-shadow: 0 0 6px rgba(90, 155, 255, 0.3);
+    }
+
+    .password-wrapper {
+      position: relative;
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 18px;
+      color: #777;
+    }
+    .btn-primary {
+      background-color: #5a9bff;
+      color: white;
+      font-weight: 500;
+      border: 1px solid #5a9bff;
+      font-weight: 500;
+      margin-top: 10px;
+      width: 100%;
+      padding: 9px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #3a80f5;
+    }
+    .btn:hover {
+      background-color: #5a9bff;
+      color: black;
+    }
+
+  </style>
+</head>
+<body>
+ <div class="container form-box">
+  <h2 class="text-center">Đăng ký tài khoản</h2>
+    <form id="loginForm"> 
+      <div>
+        <label >Họ tên</label>
+        <input type="text"  id="name">
+      </div>
+      <div>
+        <label >Số điện thoại</label>
+        <input type="text" id="phone">
+      </div>
+       <div>
+        <label >Mật khẩu</label>
+        <input type="password" id="password" >
+      </div>
+      <button type="submit" class="btn btn-primary mb-3">Đăng ký</button>
+    </form>
+      <p class="text-center mt- mb-0">Chưa có tài khoản? <a href="DangKi.html">Đăng ký</a></p>
+  </div>
+
+
+  <!--js-->
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value;
+    const phone = document.getElementById("phone").value;
+    const password = document.getElementById("password").value;
+
+    if (!name || !phone || !password) {
+        alert("Vui lòng nhập đầy đủ thông tin!");
+        return;
+    }
+    localStorage.setItem("userName", name);
+    localStorage.setItem("userPhone", phone);
+    localStorage.setItem("userPassword", password);
+
+    alert("Đăng ký thành công! Bạn hãy đăng nhập.");
+    window.location.href = "DangNhap.html";
+});
+</script>
+
+
+</body>
+</html>
